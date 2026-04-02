@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>He Said She Said Ministries | Radiant Soul</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed": "#ffd9e3",
+                    "on-tertiary-fixed": "#2a151f",
+                    "tertiary-fixed-dim": "#e0bdcb",
+                    "surface-variant": "#e5e2e1",
+                    "surface-bright": "#fcf9f8",
+                    "surface": "#fcf9f8",
+                    "on-primary-fixed": "#3e001e",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed": "#ffd8e7",
+                    "surface-container-highest": "#e5e2e1",
+                    "tertiary-fixed": "#fdd9e7",
+                    "on-secondary-container": "#7b345a",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-container-high": "#eae7e7",
+                    "tertiary-container": "#8a6d79",
+                    "tertiary": "#6f5460",
+                    "on-background": "#1c1b1b",
+                    "outline-variant": "#dfbec6",
+                    "inverse-primary": "#ffb0c9",
+                    "background": "#fcf9f8",
+                    "surface-container": "#f0eded",
+                    "on-secondary-fixed-variant": "#742d54",
+                    "on-secondary-fixed": "#3d0026",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#d5307b",
+                    "secondary-fixed-dim": "#ffafd4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary": "#b30a62",
+                    "on-primary-container": "#fffbff",
+                    "secondary": "#90456c",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#584047",
+                    "on-surface": "#1c1b1b",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed-variant": "#8e004c",
+                    "surface-tint": "#b60f65",
+                    "on-tertiary-fixed-variant": "#59404b",
+                    "on-tertiary-container": "#fffbff",
+                    "secondary-container": "#fea2ce",
+                    "primary-fixed-dim": "#ffb0c9",
+                    "outline": "#8c7077"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
+        .signature-gradient {
+            background: linear-gradient(135deg, #b30a62 0%, #d5307b 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .font-logo { font-family: 'Playfair Display', serif; }
+        @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            animation: marquee 60s linear infinite;
+            will-change: transform;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl transition-all duration-300">
+<nav class="flex justify-between items-center px-12 py-6 max-w-[1600px] mx-auto">
+<div class="flex items-center gap-3">
+    <img src="hsss-logo.svg" alt="He Said She Said Ministries" class="h-10 w-auto">
+    <span class="font-logo font-bold text-lg text-primary hidden lg:block">He Said She Said Ministries</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold border-b-2 border-primary-fixed hover:text-primary-container transition-all duration-300" href="index.html">Home</a>
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="about.html">About</a>
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="livestream.html">Livestream</a>
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="coaching.html">Coaching</a>
+<a href="contact.html">
+    <button class="signature-gradient text-on-primary px-8 py-3 rounded-full font-label font-bold tracking-tight hover:scale-95 duration-300 transition-all shadow-lg shadow-primary/10">
+        Contact
+    </button>
+</a>
+</div>
+</nav>
+</header>
+<main class="pt-16">
+<section class="relative min-h-screen flex items-center pt-24 overflow-hidden bg-surface">
+    <!-- Background Image & Overlays -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZKjS9LcbUC_JIcQNQOsm1tN8GmpaosSfynZduGd7TNyeKHaOv189ZgVKSgFQJ_lVcBn4RtkfxPRSlurXmY-HUmsc0FxW0b_xvWaSU_e49uSB_8T761_WK4EnFDFVwUn6NJSnCHF2VxqyLVQfDis0DdN8RiT19_sCIEkMEy0mWSvMrchNI_RvRQHxY2Y8ylqQfNn8GKdBwpjDfCVqGGXRWpKdxI1RxFfnh6aNFLmepYN_8RIIyeTexC9bFDvzaKDzwe9qk0WVqIA" 
+             alt="Serene morning prayer" 
+             class="w-full h-full object-cover">
+        <!-- Gradient Overlay for readability -->
+        <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-surface/20"></div>
+    </div>
+
+    <!-- Background Tonal Elements -->
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-fixed rounded-full blur-3xl opacity-20 z-0 animate-pulse"></div>
+
+    <div class="container mx-auto px-12 max-w-[1600px] flex flex-col md:flex-row items-center gap-16 relative z-20">
+        <!-- Hero Text Content -->
+        <div class="w-full md:w-1/2">
+            <span class="text-primary font-label tracking-[0.3em] uppercase text-xs mb-8 block font-bold">He Said She Said Ministries</span>
+            <h1 class="text-4xl md:text-[6rem] leading-[1] text-on-surface mb-12 tracking-tight">
+                His Word. Your Purpose. <br/>
+                <span class="italic text-primary serif ml-[-0.05em]">No Compromise.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-on-surface-variant mb-12 leading-[1.6] max-w-2xl font-body">
+We build our lives around what the world tells us we are. But what if He has already said something different? <br/> <br/>
+HSSS guides men and women to drop the world's narrative, pursue the mind of Christ, and walk boldly in who He says they are.            </p>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-10">
+                <button onclick="window.location.href='livestream.html'" class="signature-gradient text-on-primary px-10 py-5 rounded-full text-lg font-bold shadow-2xl shadow-primary/20 hover:scale-105 transition-all duration-300">
+                    Join Morning Prayer
+                </button>
+                <a href="#" class="group flex items-center gap-4 text-on-surface font-bold text-lg">
+                    <span class="border-b-2 border-primary-fixed group-hover:border-primary transition-all duration-300 pb-1">Our Story</span>
+                    <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-300">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Empty Right Column -->
+        <div class="w-full md:w-1/2 hidden md:block"></div>
+    </div>
+</section>
+<section class="py-32 bg-surface relative overflow-hidden">
+    <!-- Offset Background Block -->
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-2/3 h-4/5 bg-surface-container-low -z-10 rounded-l-[100px]"></div>
+
+    <div class="container mx-auto px-12 max-w-[1600px]">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-20 items-center">
+            <!-- Asymmetric Image Placement -->
+            <div class="md:col-span-6 relative">
+                <div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative z-10 group">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs0ig0bDF0pIEaZwEb5-S1VaQvqIOjQgr3o4GIrHHMOZffcrUFUbWEsvz_9tPS0pgNfDQxu8SoYa1y5A7cnjOnOv3wtNL_IZNXFrE18nuhqPLRaGdnhWh3bHSqUyBkw_AXYdqjyBF1LUbC_x7GPRnwnq3iJMH2nQawkGnWaYiBGE28XD4YlluduCvG1FKNqdzKsbKrrnJI5UJiu_McpDzo65lebrBwP5y0uz2fTTjuAEdm81WcGdABWILo0yZ1HDMFjTBoeR5Y8g" 
+                         alt="Sacred Study" 
+                         class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                </div>
+                <!-- Decorative Layer -->
+                <div class="absolute -top-12 -right-12 w-64 h-64 bg-secondary-fixed opacity-30 blur-3xl -z-10 animate-pulse"></div>
+            </div>
+
+            <!-- Overlapping Content Card -->
+            <div class="md:col-span-6 md:-ml-32 z-20">
+                <div class="bg-surface-container-lowest p-12 md:p-16 rounded-[2.5rem] shadow-[0_48px_80px_-16px_rgba(140,112,119,0.08)]">
+                    <h2 class="text-5xl md:text-6xl mb-10 leading-[1.1] tracking-tight">
+                        Built for His Purpose. <br/>
+                        <span class="italic text-secondary serif">Designed for You.</span>
+                    </h2>
+                    <div class="space-y-8 text-lg md:text-xl text-on-surface-variant leading-relaxed font-body">
+                        <p>
+                            HE SAID she said, is a faith-based navigation system designed to guide him and her into wholeness — spirit, soul, and body. We help men and women move beyond the ideologies and distorted perspectives shaped by their environment, and into alignment with the vision God has uniquely purposed for their lives.
+                        </p>
+                        <p>
+                            Through that alignment, each person is equipped — not just inspired — to build practical strategies that transform themselves and the world around them.
+                        </p>
+                        <p> 
+                            We meet you where you are. Through virtual coaching sessions, community gatherings, and mental health referral services, HE SAID she said walks alongside you every step of the journey.
+                        </p>
+                    </div>
+                    
+                    <!-- Stats Grid with high-end feel -->
+                    <div class="mt-16 pt-12 border-t border-outline-variant/10 grid grid-cols-2 gap-12">
+                        <div class="group">
+                            <div class="text-5xl font-headline text-primary mb-2 transition-transform duration-300 group-hover:translate-y-[-4px]">500+</div>
+                            <div class="text-xs font-label uppercase tracking-[0.2em] text-outline font-bold">Soul Journers</div>
+                        </div>
+                        <div class="group">
+                            <div class="text-5xl font-headline text-primary mb-2 transition-transform duration-300 group-hover:translate-y-[-4px]">Daily</div>
+                            <div class="text-xs font-label uppercase tracking-[0.2em] text-outline font-bold">Divine Connection</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-32 bg-surface-container-low">
+    <div class="container mx-auto px-12 max-w-[1600px]">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div class="max-w-2xl">
+                <span class="text-primary font-label tracking-[0.3em] uppercase text-xs mb-6 block font-bold">The Sanctuary Path</span>
+                <h2 class="text-5xl md:text-7xl leading-tight tracking-tighter">Your Next <span class="italic text-secondary serif">Step.</span></h2>
+            </div>
+            <p class="text-xl text-on-surface-variant max-w-md font-body leading-relaxed">
+                Discover the path tailored for your current season of growth and spiritual exploration.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Card 1: Morning Prayer -->
+            <div class="bg-surface-container-lowest p-12 rounded-[2rem] transition-all duration-500 flex flex-col h-full group hover:translate-y-[-8px] hover:shadow-[0_32px_64px_-16px_rgba(140,112,119,0.12)]">
+                <div class="w-20 h-20 bg-primary-fixed/50 rounded-2xl flex items-center justify-center mb-10 transition-transform duration-500 group-hover:rotate-6">
+                    <span class="material-symbols-outlined text-primary text-4xl">videocam</span>
+                </div>
+                <h3 class="text-3xl mb-4 tracking-tight">5:45 AM Tuesday Prayer</h3>
+                <div class="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-primary/10 text-primary self-start">
+                    <span class="material-symbols-outlined text-sm">schedule</span>
+                    <span class="text-xs font-label font-bold uppercase tracking-widest">Every Tuesday</span>
+                </div>
+                <p class="text-lg text-on-surface-variant mb-4 font-body leading-relaxed">
+                    We are now on Zoom — No passcode needed. Join our collective prayer calls designed to align your heart with divine intentions.
+                </p>
+                <div class="mb-10 p-4 bg-surface-container-low rounded-xl border border-outline-variant/10">
+                    <div class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant/70 mb-1">Meeting ID</div>
+                    <div class="font-mono text-lg font-bold text-on-surface">815 758 1664</div>
+                </div>
+                <div class="pt-8 border-t border-outline-variant/10 mt-auto">
+                    <a href="https://us06web.zoom.us/j/8157581664?omn=82461919629" target="_blank" class="text-primary font-bold flex items-center gap-3 text-lg group/link">
+                        <span>Join Morning Prayer</span>
+                        <span class="material-symbols-outlined group-hover/link:translate-x-2 transition-transform">east</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2: Men of HSSS -->
+            <div class="bg-surface-container-lowest p-12 rounded-[2rem] transition-all duration-500 flex flex-col h-full group hover:translate-y-[-8px] hover:shadow-[0_32px_64px_-16px_rgba(140,112,119,0.12)]">
+                <div class="w-20 h-20 bg-secondary-fixed/50 rounded-2xl flex items-center justify-center mb-10 transition-transform duration-500 group-hover:rotate-6">
+                    <span class="material-symbols-outlined text-secondary text-4xl">shield</span>
+                </div>
+                <h3 class="text-3xl mb-4 tracking-tight uppercase">Join the Men of HSSS</h3>
+                <div class="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-secondary/10 text-secondary self-start">
+                    <span class="material-symbols-outlined text-sm">calendar_month</span>
+                    <span class="text-xs font-label font-bold uppercase tracking-widest">4th Tuesdays</span>
+                </div>
+                <p class="text-lg text-on-surface-variant mb-6 font-body leading-relaxed">
+                    A special space for men to gather, grow, and lead with purpose. Led by Leonard Jones — All are welcome!
+                </p>
+                <div class="pt-8 border-t border-outline-variant/10 mt-auto">
+                    <a href="about.html" class="text-secondary font-bold flex items-center gap-3 text-lg group/link">
+                        <span>All Are Welcome!</span>
+                        <span class="material-symbols-outlined group-hover/link:translate-x-2 transition-transform">east</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3: Evening Bible Session -->
+            <div class="bg-surface-container-lowest p-12 rounded-[2rem] transition-all duration-500 flex flex-col h-full group hover:translate-y-[-8px] hover:shadow-[0_32px_64px_-16px_rgba(140,112,119,0.12)]">
+                <div class="w-20 h-20 bg-tertiary-fixed/50 rounded-2xl flex items-center justify-center mb-10 transition-transform duration-500 group-hover:rotate-6">
+                    <span class="material-symbols-outlined text-tertiary text-4xl">groups</span>
+                </div>
+                <h3 class="text-3xl mb-4 tracking-tight">7:15 PM Bible Session</h3>
+                <div class="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full bg-tertiary/10 text-tertiary self-start">
+                    <span class="material-symbols-outlined text-sm">event_busy</span>
+                    <span class="text-xs font-label font-bold uppercase tracking-widest">Except 1st Tuesdays</span>
+                </div>
+                <p class="text-lg text-on-surface-variant mb-4 font-body leading-relaxed">
+                    Interactive evening sessions focusing on the mind of Christ and your purpose. Join us on Zoom (No passcode needed).
+                </p>
+                <div class="mb-10 p-4 bg-surface-container-low rounded-xl border border-outline-variant/10">
+                    <div class="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant/70 mb-1">Meeting ID</div>
+                    <div class="font-mono text-lg font-bold text-on-surface">815 758 1664</div>
+                </div>
+                <div class="pt-8 border-t border-outline-variant/10 mt-auto">
+                    <a href="https://us06web.zoom.us/j/8157581664?omn=82461919629" target="_blank" class="text-tertiary font-bold flex items-center gap-3 text-lg group/link">
+                        <span>Join Evening Session</span>
+                        <span class="material-symbols-outlined group-hover/link:translate-x-2 transition-transform">east</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-24 relative overflow-hidden bg-center bg-cover bg-no-repeat lg:bg-fixed" style="background-image: url('assets/scripture_bg.png');">
+    <!-- Overlay for Legibility -->
+    <div class="absolute inset-0 bg-[#1c1b1b]/50 backdrop-blur-[1px]"></div>
+
+    <div class="container mx-auto px-12 max-w-5xl relative z-10">
+        <div class="text-center">
+            <span class="material-symbols-outlined text-primary-fixed text-7xl opacity-50 block mb-10">format_quote</span>
+            <blockquote class="text-[2.5rem] md:text-[4.5rem] leading-[1.1] text-white serif tracking-tight mb-12 relative drop-shadow-xl">
+                "Then you will know which way to go, since you have <br class="hidden md:block"/>
+                <span class="relative">
+                    never been this way before.
+                    <div class="absolute -bottom-2 left-0 w-full h-1 bg-primary-fixed/30 -z-10"></div>
+                </span>"
+            </blockquote>
+            <cite class="block text-xl font-body text-white/80 not-italic tracking-[0.3em] uppercase text-sm font-bold">— Joshua 3:4</cite>
+        </div>
+    </div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-32 bg-surface overflow-hidden relative">
+    <div class="absolute -top-32 -right-32 w-[600px] h-[600px] bg-primary-fixed rounded-full blur-[120px] opacity-30 -z-10 pointer-events-none"></div>
+
+    <!-- Section Header -->
+    <div class="container mx-auto px-12 max-w-[1600px] mb-20 text-right">
+        <span class="text-primary font-label tracking-[0.3em] uppercase text-xs mb-8 block font-bold">Voices From the Sanctuary</span>
+        <h2 class="text-5xl md:text-7xl leading-tight tracking-tighter">What They're <span class="italic text-secondary serif">Saying.</span></h2>
+    </div>
+
+    <!-- Carousel -->
+    <div class="overflow-hidden w-full">
+        <div class="marquee-track flex gap-8 w-max">
+
+            <!-- === CARD SET (repeated twice for seamless loop) === -->
+
+            <!-- Card 1: Y.S. -->
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-primary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"Realizing my blind spot was <strong class="text-on-surface">Trust</strong>. I had to step out on Faith… I started practicing 'Open Handed Living' and taking baby steps in believing that God had my best interest at heart. Still growing and learning. God Bless you for HSSS — IT HAS BEEN A BLESSING!"</p>
+                <div>
+                    <div class="font-label font-bold text-primary text-sm">Y.S.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Community Member</div>
+                </div>
+            </div>
+
+            <!-- Card 2: C.S. -->
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-secondary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"He Said/She Said is a constant reminder of what God says and feels about me. It serves as a weekly reminder of God's care, consideration and His loving kindness towards me. He Said/She Said is simply a <strong class="text-on-surface">must have</strong> in my life!!!"</p>
+                <div>
+                    <div class="font-label font-bold text-secondary text-sm">C.S.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Weekly Attendee</div>
+                </div>
+            </div>
+
+            <!-- Card 3: F.J. -->
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-primary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"Through the Holy Spirit, I have identified areas in my life that were hindering my progress in God. My faith has increased through the weekly teaching, prophesies and testimonies shared during HSSS. I am <strong class="text-on-surface">excited about my journey</strong> and spiritual growth!"</p>
+                <div>
+                    <div class="font-label font-bold text-primary text-sm">F.J.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Prayer & Fasting Member</div>
+                </div>
+            </div>
+
+            <!-- Card 4: B.B. -->
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-tertiary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"I came into HSSS in a state of confusion. Anxiety and depression seemed to be ruling my life… By the end of the session God revealed that my anxiety was fed by the <strong class="text-on-surface">lack of trust I had in God</strong>. I gained clarity and confusion was cancelled OUT!"</p>
+                <div>
+                    <div class="font-label font-bold text-tertiary text-sm">B.B.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Faith Coaching Client</div>
+                </div>
+            </div>
+
+            <!-- Card 5: D.J. -->
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-secondary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"The Lord told me that HSSS is like a <strong class="text-on-surface">spiritual hospital/urgent care</strong> to help mend the damage that has occurred to our spirit. Through HSSS, I have experienced liberation. HSSS is my community and a safe place for me to work on me 😊."</p>
+                <div>
+                    <div class="font-label font-bold text-secondary text-sm">D.J.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Consecration Participant</div>
+                </div>
+            </div>
+
+            <!-- Card 6: Angie W. -->
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-primary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"I have experienced <strong class="text-on-surface">exponential growth</strong> in my walk with the Lord since attending HSSS. I am more intentional in my faith walk. My prayer life has increased therefore I hear clearer — which is really exciting!!!"</p>
+                <div>
+                    <div class="font-label font-bold text-primary text-sm">Angie W.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Prayer Circle Member</div>
+                </div>
+            </div>
+
+            <!-- Card 7: Anonymous -->
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-tertiary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"What God has taught me through HSSS mainly is <strong class="text-on-surface">patience</strong>… He's taking me the long way around to make sure I'm equipped for the job. Patience is not easy but will pay off if you trust God."</p>
+                <div>
+                    <div class="font-label font-bold text-tertiary text-sm">Anonymous</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">HSSS Member</div>
+                </div>
+            </div>
+
+            <!-- === DUPLICATE SET for seamless loop === -->
+
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-primary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"Realizing my blind spot was <strong class="text-on-surface">Trust</strong>. I had to step out on Faith… I started practicing 'Open Handed Living' and taking baby steps in believing that God had my best interest at heart. Still growing and learning. God Bless you for HSSS — IT HAS BEEN A BLESSING!"</p>
+                <div>
+                    <div class="font-label font-bold text-primary text-sm">Y.S.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Community Member</div>
+                </div>
+            </div>
+
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-secondary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"He Said/She Said is a constant reminder of what God says and feels about me. It serves as a weekly reminder of God's care, consideration and His loving kindness towards me. He Said/She Said is simply a <strong class="text-on-surface">must have</strong> in my life!!!"</p>
+                <div>
+                    <div class="font-label font-bold text-secondary text-sm">C.S.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Weekly Attendee</div>
+                </div>
+            </div>
+
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-primary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"Through the Holy Spirit, I have identified areas in my life that were hindering my progress in God. My faith has increased through the weekly teaching, prophesies and testimonies shared during HSSS. I am <strong class="text-on-surface">excited about my journey</strong> and spiritual growth!"</p>
+                <div>
+                    <div class="font-label font-bold text-primary text-sm">F.J.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Prayer & Fasting Member</div>
+                </div>
+            </div>
+
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-tertiary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"I came into HSSS in a state of confusion. Anxiety and depression seemed to be ruling my life… By the end of the session God revealed that my anxiety was fed by the <strong class="text-on-surface">lack of trust I had in God</strong>. I gained clarity and confusion was cancelled OUT!"</p>
+                <div>
+                    <div class="font-label font-bold text-tertiary text-sm">B.B.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Faith Coaching Client</div>
+                </div>
+            </div>
+
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-secondary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"The Lord told me that HSSS is like a <strong class="text-on-surface">spiritual hospital/urgent care</strong> to help mend the damage that has occurred to our spirit. Through HSSS, I have experienced liberation. HSSS is my community and a safe place for me to work on me 😊."</p>
+                <div>
+                    <div class="font-label font-bold text-secondary text-sm">D.J.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Consecration Participant</div>
+                </div>
+            </div>
+
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-primary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"I have experienced <strong class="text-on-surface">exponential growth</strong> in my walk with the Lord since attending HSSS. I am more intentional in my faith walk. My prayer life has increased therefore I hear clearer — which is really exciting!!!"</p>
+                <div>
+                    <div class="font-label font-bold text-primary text-sm">Angie W.</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">Prayer Circle Member</div>
+                </div>
+            </div>
+
+            <div class="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm">
+                <span class="material-symbols-outlined text-tertiary text-4xl opacity-40" style="font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48">format_quote</span>
+                <p class="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">"What God has taught me through HSSS mainly is <strong class="text-on-surface">patience</strong>… He's taking me the long way around to make sure I'm equipped for the job. Patience is not easy but will pay off if you trust God."</p>
+                <div>
+                    <div class="font-label font-bold text-tertiary text-sm">Anonymous</div>
+                    <div class="text-xs text-on-surface-variant tracking-wide mt-0.5">HSSS Member</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="py-32 bg-surface-container-low relative">
+    <div class="container mx-auto px-12 max-w-[1600px]">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-10">
+            <div class="max-w-3xl">
+                <span class="text-primary font-label tracking-[0.3em] uppercase text-xs mb-8 block font-bold">Community Gatherings</span>
+                <h2 class="text-5xl md:text-7xl leading-tight tracking-tighter">Upcoming <br/><span class="italic text-secondary serif">Moments.</span></h2>
+            </div>
+            <p class="text-xl text-on-surface-variant max-w-md font-body leading-relaxed mb-4">
+                Mark the moments shaping this season of outreach, vision, and bold forward movement for the ministry community.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Event: HSSS Food Giveaway -->
+            <div class="bg-surface-container-lowest rounded-[2.5rem] overflow-hidden transition-all duration-500 group hover:translate-y-[-8px] hover:shadow-[0_48px_80px_-20px_rgba(140,112,119,0.15)] flex flex-col">
+                <div class="relative h-56 overflow-hidden rounded-t-[2.5rem]">
+                    <img src="giveaway-hsss.avif" alt="HSSS Food Giveaway" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-between p-8">
+                        <div class="flex items-start justify-between">
+                            <span class="inline-flex items-center rounded-full bg-white/80 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-primary shadow-sm">Annual Outreach</span>
+                            <span class="flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-white/70 text-primary shadow-lg shadow-primary/10">
+                                <span class="material-symbols-outlined text-[2rem]">volunteer_activism</span>
+                            </span>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-10 flex flex-col flex-grow relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-secondary-fixed/20 rounded-full blur-3xl -z-10 group-hover:scale-150 transition-transform duration-1000"></div>
+                    <div class="flex items-center gap-3 text-secondary font-bold mb-6">
+                        <span class="material-symbols-outlined text-xl">volunteer_activism</span>
+                        <span class="text-xs font-label uppercase tracking-[0.25em]">December 6, 2025</span>
+                    </div>
+                    <h3 class="text-3xl md:text-4xl mb-5 leading-tight tracking-tight font-headline">HSSS Food Giveaway</h3>
+                    <p class="text-base text-on-surface-variant mb-10 flex-grow leading-relaxed font-body">
+                        An annual community outreach event dedicated to serving, sharing, and providing for those in need with compassion and dignity.
+                    </p>
+                    <button class="bg-surface-container text-on-surface px-8 py-4 rounded-2xl font-bold text-base hover:bg-surface-container-high transition-colors w-full">
+                        View Event Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Event: PIVOT Conference -->
+            <div class="bg-surface-container-lowest rounded-[2.5rem] overflow-hidden transition-all duration-500 group hover:translate-y-[-8px] hover:shadow-[0_48px_80px_-20px_rgba(140,112,119,0.15)] flex flex-col">
+                <div class="relative h-56 overflow-hidden rounded-t-[2.5rem]">
+                    <img src="pivot-hsss.avif" alt="PIVOT Conference" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-between p-8">
+                        <div class="flex items-start justify-between gap-4">
+                            <span class="inline-flex items-center rounded-full bg-white/80 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-tertiary shadow-sm">Past Conference</span>
+                            <span class="flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-white/70 text-tertiary shadow-lg shadow-tertiary/10">
+                                <span class="material-symbols-outlined text-[2rem]">sync_alt</span>
+                            </span>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-10 flex flex-col flex-grow relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-tertiary-fixed/20 rounded-full blur-3xl -z-10 group-hover:scale-150 transition-transform duration-1000"></div>
+                    <div class="flex items-center gap-3 text-tertiary font-bold mb-6">
+                        <span class="material-symbols-outlined text-xl">sync_alt</span>
+                        <span class="text-xs font-label uppercase tracking-[0.25em]">March 9-11, 2023</span>
+                    </div>
+                    <h3 class="text-3xl md:text-4xl mb-4 leading-tight tracking-tight font-headline">PIVOT Conference</h3>
+                    <p class="text-sm font-label uppercase tracking-[0.22em] text-secondary mb-5">Pursuing Intentional Vision Over Thought</p>
+                    <p class="text-base text-on-surface-variant mb-10 flex-grow leading-relaxed font-body">
+                        A bold conference call to reposition, refocus, and embrace "the COURAGE TO SHIFT NOW!" with faith-led intention.
+                    </p>
+                    <button class="bg-surface-container text-on-surface px-8 py-4 rounded-2xl font-bold text-base hover:bg-surface-container-high transition-colors w-full">
+                        Revisit The Theme
+                    </button>
+                </div>
+            </div>
+
+            <!-- Featured Theme: 2026 Theme -->
+            <div class="md:col-span-2 relative rounded-[2.5rem] overflow-hidden transition-all duration-500 group hover:shadow-[0_64px_120px_-24px_rgba(179,10,98,0.25)] min-h-[420px] flex items-end">
+                <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(62,0,30,0.94),rgba(179,10,98,0.85)_45%,rgba(213,48,123,0.82)_100%)] transition-transform duration-[2000ms] group-hover:scale-105"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_28%),radial-gradient(circle_at_15%_20%,rgba(255,217,227,0.18),transparent_22%)]"></div>
+                <div class="absolute right-10 top-10 hidden md:flex h-40 w-40 items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm">
+                    <div class="text-center">
+                        <div class="text-[11px] font-label uppercase tracking-[0.28em] text-primary-fixed">Theme</div>
+                        <div class="mt-3 text-3xl font-headline tracking-tight text-white">2026</div>
+                    </div>
+                </div>
+                <div class="relative z-10 p-12 md:p-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8 w-full">
+                    <div>
+                        <div class="flex items-center gap-3 text-primary-fixed font-bold mb-6">
+                            <span class="material-symbols-outlined text-xl">near_me</span>
+                            <span class="text-xs font-label uppercase tracking-[0.25em]">2026 Organization Theme</span>
+                            <span class="ml-2 px-3 py-1 rounded-full bg-primary/80 text-on-primary text-xs font-label font-bold uppercase tracking-widest">Featured</span>
+                        </div>
+                        <h3 class="text-4xl md:text-7xl mb-5 leading-[0.95] tracking-tighter font-headline text-white">BOLDLY <span class="italic text-primary-fixed">GO!</span></h3>
+                        <p class="text-lg text-white/80 max-w-2xl leading-relaxed font-body">
+                            Our 2026 organization theme, anchored in Joshua 3:4B, calling the ministry to move with courage into unfamiliar territory and trust the direction of God.
+                        </p>
+                        <p class="mt-5 text-xs font-label uppercase tracking-[0.28em] text-white/65">Joshua 3:4B</p>
+                    </div>
+                    <div class="shrink-0">
+                        <button class="signature-gradient text-on-primary px-10 py-5 rounded-2xl font-bold text-lg hover:scale-[1.03] transition-all duration-300 shadow-2xl shadow-primary/30 whitespace-nowrap">
+                            Embrace The Theme
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-40 bg-surface relative overflow-hidden">
+    <!-- Background Flourish -->
+    <div class="absolute -bottom-24 -right-24 w-[600px] h-[600px] bg-primary-fixed rounded-full blur-[120px] opacity-20 -z-10"></div>
+    
+    <div class="container mx-auto px-12 max-w-7xl">
+        <div class="signature-gradient rounded-[4rem] p-16 md:p-32 text-center text-on-primary shadow-[0_64px_128px_-24px_rgba(179,10,98,0.35)] relative overflow-hidden group">
+            <!-- Animated Inner Glow -->
+            <div class="absolute top-0 left-0 w-full h-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+            
+            <h2 class="text-5xl md:text-[6rem] leading-[1] mb-12 tracking-tighter serif">Take The Next <span class="italic">Step.</span></h2>
+            <p class="text-xl md:text-2xl mb-16 max-w-2xl mx-auto font-body leading-relaxed opacity-90">
+                Weekly gatherings that refresh the soul and sharpen the mind. You don't have to walk this path alone.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                <button class="bg-surface text-primary px-12 py-6 rounded-full text-xl font-bold hover:scale-105 transition-all duration-300 shadow-xl">
+                    Join Weekly Gathering
+                </button>
+                <button class="bg-primary-container text-on-primary-container px-12 py-6 rounded-full text-xl font-bold hover:bg-primary-fixed-dim transition-colors border-2 border-white/20">
+                    Get Prayer Reminders
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Final Editorial Footer -->
+<footer class="bg-surface-container-low py-16">
+    <div class="container mx-auto px-12 max-w-[1600px]">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+            <div class="md:col-span-5">
+                <div class="mb-8">
+                    <img src="hsss-logo.svg" alt="He Said She Said Ministries" class="h-12 w-auto mb-4">
+                    <div class="font-logo font-bold text-2xl text-primary">He Said She Said Ministries</div>
+                </div>
+                <p class="text-lg text-on-surface-variant max-w-sm font-body leading-relaxed">
+                    Building a digital sanctuary for modern believers to connect, study, and grow together in grace.
+                </p>
+            </div>
+            
+            <div class="md:col-span-2">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Explore</h4>
+                <ul class="space-y-4">
+                    <li><a href="index.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">About</a></li>
+                    <li><a href="livestream.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Livestream</a></li>
+                    <li><a href="coaching.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Coaching</a></li>
+                    <li><a href="contact.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="md:col-span-2">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Legal</h4>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-base text-on-surface/70 hover:text-primary transition-colors">Privacy</a></li>
+                    <li><a href="#" class="text-base text-on-surface/70 hover:text-primary transition-colors">Terms</a></li>
+                </ul>
+            </div>
+            
+            <div class="md:col-span-3">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Follow</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-sm">
+                        <span class="material-symbols-outlined text-xl">public</span>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-sm">
+                        <span class="material-symbols-outlined text-xl">mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pt-10 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-label tracking-[0.25em] uppercase font-bold text-on-surface/30">
+            <div>© 2024 He Said She Said Ministries</div>
+            <div class="italic text-primary/60 normal-case tracking-normal text-sm">"For you have not passed this way before." — Joshua 3:4</div>
+            <div class="hover:text-primary transition-colors">
+                <a href="https://servestrategy.com" class="underline underline-offset-4">Design by ServeStrategy.com</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body></html>

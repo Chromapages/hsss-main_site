@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact | He Said She Said Ministries</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed": "#ffd9e3",
+                    "on-tertiary-fixed": "#2a151f",
+                    "tertiary-fixed-dim": "#e0bdcb",
+                    "surface-variant": "#e5e2e1",
+                    "surface-bright": "#fcf9f8",
+                    "surface": "#fcf9f8",
+                    "on-primary-fixed": "#3e001e",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed": "#ffd8e7",
+                    "surface-container-highest": "#e5e2e1",
+                    "tertiary-fixed": "#fdd9e7",
+                    "on-secondary-container": "#7b345a",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-container-high": "#eae7e7",
+                    "tertiary-container": "#8a6d79",
+                    "tertiary": "#6f5460",
+                    "on-background": "#1c1b1b",
+                    "outline-variant": "#dfbec6",
+                    "inverse-primary": "#ffb0c9",
+                    "background": "#fcf9f8",
+                    "surface-container": "#f0eded",
+                    "on-secondary-fixed-variant": "#742d54",
+                    "on-secondary-fixed": "#3d0026",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#d5307b",
+                    "secondary-fixed-dim": "#ffafd4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary": "#b30a62",
+                    "on-primary-container": "#fffbff",
+                    "secondary": "#90456c",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#584047",
+                    "on-surface": "#1c1b1b",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed-variant": "#8e004c",
+                    "surface-tint": "#b60f65",
+                    "on-tertiary-fixed-variant": "#59404b",
+                    "on-tertiary-container": "#fffbff",
+                    "secondary-container": "#fea2ce",
+                    "primary-fixed-dim": "#ffb0c9",
+                    "outline": "#8c7077"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
+        .signature-gradient {
+            background: linear-gradient(135deg, #b30a62 0%, #d5307b 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .font-logo { font-family: 'Playfair Display', serif; }
+        .soft-panel {
+            background: linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.72) 100%);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 32px 80px -28px rgba(140, 112, 119, 0.25);
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 700ms ease, transform 700ms ease;
+        }
+        .fade-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .field-shell {
+            position: relative;
+        }
+        .field-shell::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(223,190,198,0.55), rgba(179,10,98,0.95));
+            transform: scaleX(0.18);
+            transform-origin: left center;
+            transition: transform 250ms ease;
+        }
+        .field-shell:focus-within::after {
+            transform: scaleX(1);
+        }
+        .contact-input {
+            background: rgba(246, 243, 242, 0.72);
+            border: 0;
+            border-bottom: 2px solid rgba(223, 190, 198, 0.65);
+            border-radius: 1.25rem 1.25rem 0 0;
+            color: #1c1b1b;
+            transition: transform 250ms ease, background-color 250ms ease;
+        }
+        .contact-input:focus {
+            background: rgba(255,255,255,0.95);
+            outline: none;
+            box-shadow: none;
+            transform: translateY(-2px);
+        }
+        .contact-input::placeholder {
+            color: rgba(88, 64, 71, 0.78);
+        }
+        @keyframes drift {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -18px, 0); }
+        }
+        .drift {
+            animation: drift 9s ease-in-out infinite;
+        }
+</style>
+</head>
+<body class="bg-surface text-on-surface">
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl transition-all duration-300">
+<nav class="flex justify-between items-center px-6 md:px-12 py-6 max-w-[1600px] mx-auto">
+<div class="flex items-center gap-3">
+    <a href="index.html" class="flex items-center gap-3">
+        <img src="hsss-logo.svg" alt="He Said She Said Ministries" class="h-10 w-auto">
+        <span class="font-logo font-bold text-lg text-primary hidden lg:block">He Said She Said Ministries</span>
+    </a>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="index.html">Home</a>
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="about.html">About</a>
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="livestream.html">Livestream</a>
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="coaching.html">Coaching</a>
+<a href="contact.html">
+    <button class="signature-gradient text-on-primary px-8 py-3 rounded-full font-label font-bold tracking-tight hover:scale-95 duration-300 transition-all shadow-lg shadow-primary/10">
+        Contact
+    </button>
+</a>
+</div>
+</nav>
+</header>
+
+<main class="pt-16">
+<section class="relative overflow-hidden bg-surface">
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-x-0 top-0 h-[72%] bg-[radial-gradient(circle_at_top_left,_rgba(255,217,227,0.95),_rgba(252,249,248,0)_48%),radial-gradient(circle_at_80%_18%,_rgba(254,162,206,0.38),_rgba(252,249,248,0)_34%),linear-gradient(180deg,_#fcf9f8_0%,_#f6f3f2_100%)]"></div>
+        <div class="absolute top-24 right-[8%] h-48 w-48 rounded-full bg-white/40 blur-3xl drift"></div>
+        <div class="absolute left-[4%] top-48 h-72 w-72 rounded-full bg-primary-fixed/40 blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12 pt-24 md:pt-32 pb-16 md:pb-24">
+        <div class="grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+            <div class="fade-up">
+                <span class="mb-8 block text-xs font-label font-bold uppercase tracking-[0.32em] text-primary">Contact The Sanctuary</span>
+                <h1 class="max-w-4xl text-5xl leading-[0.95] tracking-tight text-on-surface md:text-7xl lg:text-[6.5rem]">
+                    Let&apos;s Begin the
+                    <span class="serif italic text-primary">Conversation.</span>
+                </h1>
+                <p class="mt-8 max-w-2xl text-lg leading-relaxed text-on-surface-variant md:text-2xl">
+                    Reach out for prayer, questions, coaching inquiries, or your next step with He Said She Said Ministries. We made this page feel like an open door, not a cold intake form.
+                </p>
+                <p class="mt-4 max-w-xl text-base leading-relaxed text-on-surface-variant">
+                    Looking specifically for B.A.E. or C.O.R.E. support? Visit the <a href="coaching.html" class="font-bold text-primary">Coaching Hub</a> for a focused overview, then contact the ministry directly.
+                </p>
+                <div class="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center">
+                    <a href="#contact-form" class="signature-gradient inline-flex items-center justify-center rounded-full px-10 py-5 text-lg font-bold text-on-primary shadow-2xl shadow-primary/20 transition-all duration-300 hover:scale-[1.02]">
+                        Send a Message
+                    </a>
+                    <a href="tel:8554743724" class="group inline-flex items-center gap-3 text-lg font-bold text-on-surface">
+                        <span class="border-b-2 border-primary-fixed pb-1 transition-all duration-300 group-hover:border-primary">Call 855-474-3724</span>
+                        <span class="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1">call</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="fade-up lg:pl-10">
+                <div class="soft-panel rounded-[2rem] border border-white/40 p-8 md:p-10">
+                    <div class="grid gap-6 sm:grid-cols-2">
+                        <a href="mailto:hsssat@outlook.com" class="group rounded-[1.75rem] bg-white/65 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white">
+                            <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-fixed/70 text-primary">
+                                <span class="material-symbols-outlined text-3xl">mail</span>
+                            </div>
+                            <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-on-surface/45">Email</div>
+                            <div class="mt-3 text-lg font-bold text-on-surface">hsssat@outlook.com</div>
+                            <div class="mt-2 text-sm leading-relaxed text-on-surface-variant">For prayer requests, ministry questions, and follow-up conversations.</div>
+                        </a>
+                        <a href="tel:8554743724" class="group rounded-[1.75rem] bg-white/65 p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-white">
+                            <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary-fixed/70 text-secondary">
+                                <span class="material-symbols-outlined text-3xl">call</span>
+                            </div>
+                            <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-on-surface/45">Phone</div>
+                            <div class="mt-3 text-lg font-bold text-on-surface">855-474-3724</div>
+                            <div class="mt-2 text-sm leading-relaxed text-on-surface-variant">A direct line for those who prefer a real conversation over email.</div>
+                        </a>
+                    </div>
+                    <div class="mt-6 rounded-[1.75rem] bg-[linear-gradient(135deg,rgba(179,10,98,0.08),rgba(144,69,108,0.14))] p-6">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-primary">Why Reach Out</div>
+                        <p class="mt-3 max-w-xl text-base leading-relaxed text-on-surface-variant">
+                            Whether you&apos;re seeking guidance, partnership, prayer, or clarity about the ministry, we want the next step to feel personal, peaceful, and easy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-surface-container-low py-16 md:py-24">
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12">
+        <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div class="fade-up">
+                <div class="h-full rounded-[2.5rem] bg-surface p-8 md:p-12 shadow-[0_32px_64px_-24px_rgba(140,112,119,0.14)]">
+                    <span class="mb-6 block text-xs font-label font-bold uppercase tracking-[0.3em] text-primary">What To Expect</span>
+                    <h2 class="text-4xl leading-tight tracking-tight md:text-5xl">
+                        A response with
+                        <span class="serif italic text-secondary">warmth and clarity.</span>
+                    </h2>
+                    <div class="mt-10 space-y-8">
+                        <div class="flex gap-4">
+                            <div class="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary-fixed/60 text-primary">
+                                <span class="material-symbols-outlined">volunteer_activism</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl tracking-tight">Prayer Requests Welcome</h3>
+                                <p class="mt-2 text-base leading-relaxed text-on-surface-variant">Use the message field freely if you need support, encouragement, or someone to stand in faith with you.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary-fixed/60 text-secondary">
+                                <span class="material-symbols-outlined">forum</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl tracking-tight">Simple, Human Follow-Up</h3>
+                                <p class="mt-2 text-base leading-relaxed text-on-surface-variant">This page is designed to feel conversational, so your details and message come through in one complete introduction.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-tertiary-fixed/70 text-tertiary">
+                                <span class="material-symbols-outlined">spa</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl tracking-tight">A Sanctuary Tone</h3>
+                                <p class="mt-2 text-base leading-relaxed text-on-surface-variant">Every detail here follows the ministry&apos;s radiant editorial aesthetic, so the contact moment still feels sacred and intentional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fade-up" id="contact-form">
+                <div class="soft-panel rounded-[2.5rem] border border-white/50 p-8 md:p-12 lg:p-14">
+                    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                        <div>
+                            <span class="mb-4 block text-xs font-label font-bold uppercase tracking-[0.3em] text-primary">Send Your Note</span>
+                            <h2 class="text-4xl leading-tight tracking-tight md:text-5xl">Share what&apos;s on your <span class="serif italic text-primary">heart.</span></h2>
+                        </div>
+                        <p class="max-w-sm text-sm leading-relaxed text-on-surface-variant">All requested fields are included: Name, Address, Email, Phone, Subject, and Message.</p>
+                    </div>
+
+                    <form class="mt-10" id="ministry-contact-form" novalidate>
+                        <div class="grid gap-6 md:grid-cols-2">
+                            <label class="field-shell block">
+                                <span class="mb-3 block text-xs font-label font-bold uppercase tracking-[0.25em] text-on-surface/45">Name</span>
+                                <input class="contact-input w-full px-0 pb-4 pt-2 text-base" name="name" placeholder="Your full name" required type="text"/>
+                            </label>
+                            <label class="field-shell block">
+                                <span class="mb-3 block text-xs font-label font-bold uppercase tracking-[0.25em] text-on-surface/45">Address</span>
+                                <input class="contact-input w-full px-0 pb-4 pt-2 text-base" name="address" placeholder="Street, city, state" required type="text"/>
+                            </label>
+                            <label class="field-shell block">
+                                <span class="mb-3 block text-xs font-label font-bold uppercase tracking-[0.25em] text-on-surface/45">Email</span>
+                                <input class="contact-input w-full px-0 pb-4 pt-2 text-base" name="email" placeholder="you@example.com" required type="email"/>
+                            </label>
+                            <label class="field-shell block">
+                                <span class="mb-3 block text-xs font-label font-bold uppercase tracking-[0.25em] text-on-surface/45">Phone</span>
+                                <input class="contact-input w-full px-0 pb-4 pt-2 text-base" name="phone" placeholder="(555) 555-5555" required type="tel"/>
+                            </label>
+                        </div>
+                        <label class="field-shell mt-8 block">
+                            <span class="mb-3 block text-xs font-label font-bold uppercase tracking-[0.25em] text-on-surface/45">Subject</span>
+                            <input class="contact-input w-full px-0 pb-4 pt-2 text-base" name="subject" placeholder="How can we support you?" required type="text"/>
+                        </label>
+                        <label class="field-shell mt-8 block">
+                            <span class="mb-3 block text-xs font-label font-bold uppercase tracking-[0.25em] text-on-surface/45">Message</span>
+                            <textarea class="contact-input min-h-[160px] w-full resize-y px-0 pb-4 pt-2 text-base" name="message" placeholder="Share your prayer request, question, or next step." required></textarea>
+                        </label>
+
+                        <div class="mt-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+                            <p class="max-w-md text-sm leading-relaxed text-on-surface-variant">
+                                This form is presented as a polished static experience for now. Submissions open a ready-made email draft so nothing gets lost while backend handling is still being finalized.
+                            </p>
+                            <button class="signature-gradient inline-flex items-center justify-center rounded-full px-10 py-5 text-lg font-bold text-on-primary shadow-2xl shadow-primary/20 transition-all duration-300 hover:scale-[1.02]" type="submit">
+                                Send Message
+                            </button>
+                        </div>
+                        <p class="mt-5 hidden rounded-2xl bg-white/75 px-5 py-4 text-sm text-on-surface-variant" id="form-status" role="status"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="relative overflow-hidden bg-surface py-24 md:py-32">
+    <div class="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-primary-fixed/40 blur-[120px]"></div>
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12">
+        <div class="signature-gradient relative overflow-hidden rounded-[3rem] p-10 text-on-primary shadow-[0_56px_120px_-28px_rgba(179,10,98,0.3)] md:p-16">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.22),_transparent_36%)]"></div>
+            <div class="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+                <div class="max-w-3xl">
+                    <span class="mb-5 block text-xs font-label font-bold uppercase tracking-[0.3em] text-primary-fixed">Stay Connected</span>
+                    <h2 class="text-4xl leading-tight tracking-tight md:text-6xl">When you&apos;re ready, <span class="serif italic">reach out.</span></h2>
+                    <p class="mt-6 text-lg leading-relaxed text-white/85 md:text-xl">
+                        The ministry&apos;s next conversation could start with one email, one call, or one message sent in faith.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4 sm:flex-row">
+                    <a href="mailto:hsssat@outlook.com" class="inline-flex items-center justify-center rounded-full bg-surface px-8 py-4 text-base font-bold text-primary transition-transform duration-300 hover:scale-[1.02]">Email The Ministry</a>
+                    <a href="index.html" class="inline-flex items-center justify-center rounded-full border border-white/25 px-8 py-4 text-base font-bold text-white transition-colors duration-300 hover:bg-white/10">Return Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer class="bg-surface-container-low py-16">
+    <div class="container mx-auto px-12 max-w-[1600px]">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+            <div class="md:col-span-5">
+                <div class="mb-8">
+                    <img src="hsss-logo.svg" alt="He Said She Said Ministries" class="h-12 w-auto mb-4">
+                    <div class="font-logo font-bold text-2xl text-primary">He Said She Said Ministries</div>
+                </div>
+                <p class="text-lg text-on-surface-variant max-w-sm font-body leading-relaxed">
+                    Building a digital sanctuary for modern believers to connect, study, and grow together in grace.
+                </p>
+            </div>
+            <div class="md:col-span-2">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Explore</h4>
+                <ul class="space-y-4">
+                    <li><a href="index.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">About</a></li>
+                    <li><a href="livestream.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Livestream</a></li>
+                    <li><a href="coaching.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Coaching</a></li>
+                    <li><a href="contact.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Legal</h4>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-base text-on-surface/70 hover:text-primary transition-colors">Privacy</a></li>
+                    <li><a href="#" class="text-base text-on-surface/70 hover:text-primary transition-colors">Terms</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Follow</h4>
+                <div class="flex gap-4">
+                    <a href="index.html" class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-sm">
+                        <span class="material-symbols-outlined text-xl">home</span>
+                    </a>
+                    <a href="mailto:hsssat@outlook.com" class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-sm">
+                        <span class="material-symbols-outlined text-xl">mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="pt-10 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-label tracking-[0.25em] uppercase font-bold text-on-surface/30">
+            <div>© 2024 He Said She Said Ministries</div>
+            <div class="italic text-primary/60 normal-case tracking-normal text-sm">"For you have not passed this way before." — Joshua 3:4</div>
+            <div class="hover:text-primary transition-colors">
+                <a href="https://servestrategy.com" class="underline underline-offset-4">Design by ServeStrategy.com</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll('.fade-up').forEach((element) => observer.observe(element));
+
+    const form = document.getElementById('ministry-contact-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!form.reportValidity()) {
+            status.classList.remove('hidden');
+            status.textContent = 'Please complete each field so your message is ready to send.';
+            return;
+        }
+
+        const data = new FormData(form);
+        const lines = [
+            `Name: ${data.get('name')}`,
+            `Address: ${data.get('address')}`,
+            `Email: ${data.get('email')}`,
+            `Phone: ${data.get('phone')}`,
+            '',
+            `${data.get('message')}`
+        ];
+
+        const subject = encodeURIComponent(data.get('subject'));
+        const body = encodeURIComponent(lines.join('\n'));
+        window.location.href = `mailto:hsssat@outlook.com?subject=${subject}&body=${body}`;
+
+        status.classList.remove('hidden');
+        status.textContent = 'Your email draft is opening now with all form details included.';
+    });
+</script>
+</body>
+</html>

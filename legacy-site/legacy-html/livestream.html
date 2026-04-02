@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Livestream | He Said She Said Ministries</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed": "#ffd9e3",
+                    "on-tertiary-fixed": "#2a151f",
+                    "tertiary-fixed-dim": "#e0bdcb",
+                    "surface-variant": "#e5e2e1",
+                    "surface-bright": "#fcf9f8",
+                    "surface": "#fcf9f8",
+                    "on-primary-fixed": "#3e001e",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed": "#ffd8e7",
+                    "surface-container-highest": "#e5e2e1",
+                    "tertiary-fixed": "#fdd9e7",
+                    "on-secondary-container": "#7b345a",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-container-high": "#eae7e7",
+                    "tertiary-container": "#8a6d79",
+                    "tertiary": "#6f5460",
+                    "on-background": "#1c1b1b",
+                    "outline-variant": "#dfbec6",
+                    "inverse-primary": "#ffb0c9",
+                    "background": "#fcf9f8",
+                    "surface-container": "#f0eded",
+                    "on-secondary-fixed-variant": "#742d54",
+                    "on-secondary-fixed": "#3d0026",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#d5307b",
+                    "secondary-fixed-dim": "#ffafd4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary": "#b30a62",
+                    "on-primary-container": "#fffbff",
+                    "secondary": "#90456c",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#584047",
+                    "on-surface": "#1c1b1b",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed-variant": "#8e004c",
+                    "surface-tint": "#b60f65",
+                    "on-tertiary-fixed-variant": "#59404b",
+                    "on-tertiary-container": "#fffbff",
+                    "secondary-container": "#fea2ce",
+                    "primary-fixed-dim": "#ffb0c9",
+                    "outline": "#8c7077"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
+        .signature-gradient {
+            background: linear-gradient(135deg, #b30a62 0%, #d5307b 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .font-logo { font-family: 'Playfair Display', serif; }
+        .soft-glass {
+            background: linear-gradient(180deg, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.68) 100%);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 28px 72px -28px rgba(140, 112, 119, 0.24);
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 700ms ease, transform 700ms ease;
+        }
+        .fade-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .video-tile::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0) 12%, rgba(62,0,30,0.72) 100%);
+        }
+        .video-modal {
+            transition: opacity 260ms ease, visibility 260ms ease;
+        }
+        .video-modal[aria-hidden="true"] {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .video-modal[aria-hidden="false"] {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        .modal-panel {
+            transform: translateY(20px) scale(0.98);
+            transition: transform 260ms ease;
+        }
+        .video-modal[aria-hidden="false"] .modal-panel {
+            transform: translateY(0) scale(1);
+        }
+        .player-shell iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+</style>
+</head>
+<body class="bg-surface text-on-surface">
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl transition-all duration-300">
+<nav class="flex justify-between items-center px-6 md:px-12 py-6 max-w-[1600px] mx-auto">
+<div class="flex items-center gap-3">
+    <a href="index.html" class="flex items-center gap-3">
+        <img src="hsss-logo.svg" alt="He Said She Said Ministries" class="h-10 w-auto">
+        <span class="font-logo font-bold text-lg text-primary hidden lg:block">He Said She Said Ministries</span>
+    </a>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="index.html">Home</a>
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="about.html">About</a>
+<a class="text-primary font-bold border-b-2 border-primary-fixed hover:text-primary-container transition-all duration-300" href="livestream.html">Livestream</a>
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="coaching.html">Coaching</a>
+<a href="contact.html">
+    <button class="signature-gradient text-on-primary px-8 py-3 rounded-full font-label font-bold tracking-tight hover:scale-95 duration-300 transition-all shadow-lg shadow-primary/10">
+        Contact
+    </button>
+</a>
+</div>
+</nav>
+</header>
+
+<main class="pt-16">
+<section class="relative overflow-hidden bg-surface">
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-x-0 top-0 h-[76%] bg-[radial-gradient(circle_at_top_left,_rgba(255,217,227,0.88),_rgba(252,249,248,0)_46%),radial-gradient(circle_at_82%_12%,_rgba(254,162,206,0.26),_rgba(252,249,248,0)_28%),linear-gradient(180deg,_#fcf9f8_0%,_#f6f3f2_100%)]"></div>
+        <div class="absolute left-[6%] top-36 h-72 w-72 rounded-full bg-primary-fixed/30 blur-[120px]"></div>
+        <div class="absolute right-[8%] top-28 h-56 w-56 rounded-full bg-white/50 blur-[120px]"></div>
+    </div>
+
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12 pt-24 md:pt-32 pb-10 md:pb-16">
+        <div class="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
+            <div class="fade-up">
+                <span class="mb-8 block text-xs font-label font-bold uppercase tracking-[0.32em] text-primary">Digital Sanctuary Broadcast</span>
+                <h1 class="max-w-2xl text-5xl leading-[0.94] tracking-tight text-on-surface md:text-7xl lg:text-[6.2rem]">
+                    Gather live in
+                    <span class="serif italic text-primary">prayer and wisdom.</span>
+                </h1>
+                <p class="mt-8 max-w-xl text-lg leading-relaxed text-on-surface-variant md:text-2xl">
+                    A premium viewing space for communal prayer, teaching, and sacred encouragement. Enter the stream, stay with the message, and explore the previous broadcasts without losing the moment.
+                </p>
+                <div class="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center">
+                    <a href="#live-player" class="signature-gradient inline-flex items-center justify-center rounded-full px-10 py-5 text-lg font-bold text-on-primary shadow-2xl shadow-primary/20 transition-all duration-300 hover:scale-[1.02]">
+                        Watch The Stream
+                    </a>
+                    <a href="#broadcasts" class="group inline-flex items-center gap-3 text-lg font-bold text-on-surface">
+                        <span class="border-b-2 border-primary-fixed pb-1 transition-all duration-300 group-hover:border-primary">Browse Previous Broadcasts</span>
+                        <span class="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1">east</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="fade-up">
+                <div id="live-player" class="relative overflow-hidden rounded-[2.8rem] bg-[#3e001e] p-3 shadow-[0_40px_90px_-26px_rgba(179,10,98,0.28)]">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.16),_transparent_26%),linear-gradient(135deg,_rgba(255,255,255,0.06),_transparent_42%)]"></div>
+                    <div class="relative aspect-video overflow-hidden rounded-[2.1rem] bg-black player-shell">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?rel=0"
+                            title="He Said She Said Ministries livestream placeholder"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="absolute left-7 top-7 inline-flex items-center gap-3 rounded-full bg-[#3e001e]/72 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-primary-fixed backdrop-blur-md">
+                        <span class="flex h-2.5 w-2.5 rounded-full bg-primary-fixed animate-pulse"></span>
+                        Last Stream
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative z-20 mx-auto mt-14 max-w-4xl px-2 md:mt-20 lg:mt-8">
+            <div class="soft-glass fade-up rounded-[2rem] p-8 md:p-10">
+                <div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+                    <div>
+                        <span class="mb-4 block text-xs font-label font-bold uppercase tracking-[0.3em] text-primary">Current Message</span>
+                        <h2 class="text-4xl leading-tight tracking-tight md:text-5xl">Follow with courage, even when the path feels <span class="serif italic text-secondary">new.</span></h2>
+                        <p class="mt-5 max-w-3xl text-base leading-relaxed text-on-surface-variant md:text-lg">
+                            This broadcast space holds the latest prayer gathering and teaching moment. The featured message is framed around Joshua 3:4B, inviting the community to move faithfully into what has not yet been seen.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="rounded-full bg-white/75 px-4 py-2 text-xs font-label font-bold uppercase tracking-[0.24em] text-primary">Prayer Gathering</span>
+                        <span class="rounded-full bg-white/75 px-4 py-2 text-xs font-label font-bold uppercase tracking-[0.24em] text-secondary">Teaching Archive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="broadcasts" class="bg-surface-container-low py-20 md:py-28">
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12">
+        <div class="mb-14 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+            <div class="max-w-3xl fade-up">
+                <span class="mb-6 block text-xs font-label font-bold uppercase tracking-[0.32em] text-primary">Previous Broadcasts</span>
+                <h2 class="text-4xl leading-tight tracking-tight md:text-6xl">Keep exploring the <span class="serif italic text-secondary">message archive.</span></h2>
+            </div>
+            <p class="max-w-md fade-up text-lg leading-relaxed text-on-surface-variant">
+                Open any teaching in a fullscreen sanctuary modal, then move seamlessly to the next message without leaving the gallery.
+            </p>
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+            <button type="button" class="video-trigger fade-up group text-left" data-index="0">
+                <article class="overflow-hidden rounded-[2rem] bg-surface-container-lowest shadow-[0_28px_56px_-28px_rgba(140,112,119,0.18)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_44px_90px_-30px_rgba(179,10,98,0.24)]">
+                    <div class="video-tile relative aspect-[4/3] overflow-hidden bg-[linear-gradient(135deg,rgba(179,10,98,0.24),rgba(254,162,206,0.45)),radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_42%)]">
+                        <div class="absolute inset-0 p-7 flex flex-col justify-between">
+                            <div class="flex items-start justify-between">
+                                <span class="rounded-full bg-white/75 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-primary">Prayer</span>
+                                <span class="flex h-14 w-14 items-center justify-center rounded-[1.35rem] bg-white/78 text-primary shadow-xl shadow-primary/10">
+                                    <span class="material-symbols-outlined text-[1.9rem]">play_arrow</span>
+                                </span>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-white/80">Broadcast 01</div>
+                                <div class="mt-2 text-2xl font-headline tracking-tight text-white">Morning Prayer Reset</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-secondary">12 min watch</div>
+                        <p class="mt-3 text-base leading-relaxed text-on-surface-variant">A quiet return to gratitude, alignment, and communal intercession.</p>
+                    </div>
+                </article>
+            </button>
+
+            <button type="button" class="video-trigger fade-up group text-left" data-index="1">
+                <article class="overflow-hidden rounded-[2rem] bg-surface-container-lowest shadow-[0_28px_56px_-28px_rgba(140,112,119,0.18)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_44px_90px_-30px_rgba(179,10,98,0.24)]">
+                    <div class="video-tile relative aspect-[4/3] overflow-hidden bg-[linear-gradient(135deg,rgba(144,69,108,0.24),rgba(224,189,203,0.48)),radial-gradient(circle_at_top_right,rgba(255,255,255,0.9),transparent_40%)]">
+                        <div class="absolute inset-0 p-7 flex flex-col justify-between">
+                            <div class="flex items-start justify-between">
+                                <span class="rounded-full bg-white/75 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-tertiary">Teaching</span>
+                                <span class="flex h-14 w-14 items-center justify-center rounded-[1.35rem] bg-white/78 text-tertiary shadow-xl shadow-tertiary/10">
+                                    <span class="material-symbols-outlined text-[1.9rem]">play_arrow</span>
+                                </span>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-white/80">Broadcast 02</div>
+                                <div class="mt-2 text-2xl font-headline tracking-tight text-white">When Trust Leads First</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-secondary">18 min watch</div>
+                        <p class="mt-3 text-base leading-relaxed text-on-surface-variant">A teaching on obedience before certainty and peace before proof.</p>
+                    </div>
+                </article>
+            </button>
+
+            <button type="button" class="video-trigger fade-up group text-left" data-index="2">
+                <article class="overflow-hidden rounded-[2rem] bg-surface-container-lowest shadow-[0_28px_56px_-28px_rgba(140,112,119,0.18)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_44px_90px_-30px_rgba(179,10,98,0.24)]">
+                    <div class="video-tile relative aspect-[4/3] overflow-hidden bg-[linear-gradient(135deg,rgba(179,10,98,0.2),rgba(255,216,231,0.48)),radial-gradient(circle_at_25%_15%,rgba(255,255,255,0.92),transparent_38%)]">
+                        <div class="absolute inset-0 p-7 flex flex-col justify-between">
+                            <div class="flex items-start justify-between">
+                                <span class="rounded-full bg-white/75 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-primary">Live Replay</span>
+                                <span class="flex h-14 w-14 items-center justify-center rounded-[1.35rem] bg-white/78 text-primary shadow-xl shadow-primary/10">
+                                    <span class="material-symbols-outlined text-[1.9rem]">play_arrow</span>
+                                </span>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-white/80">Broadcast 03</div>
+                                <div class="mt-2 text-2xl font-headline tracking-tight text-white">Healing The Inner Conversation</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-secondary">24 min watch</div>
+                        <p class="mt-3 text-base leading-relaxed text-on-surface-variant">A reflective session on identity, self-talk, and what God is saying now.</p>
+                    </div>
+                </article>
+            </button>
+
+            <button type="button" class="video-trigger fade-up group text-left" data-index="3">
+                <article class="overflow-hidden rounded-[2rem] bg-surface-container-lowest shadow-[0_28px_56px_-28px_rgba(140,112,119,0.18)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_44px_90px_-30px_rgba(179,10,98,0.24)]">
+                    <div class="video-tile relative aspect-[4/3] overflow-hidden bg-[linear-gradient(135deg,rgba(144,69,108,0.22),rgba(253,217,231,0.48)),radial-gradient(circle_at_top_right,rgba(255,255,255,0.92),transparent_40%)]">
+                        <div class="absolute inset-0 p-7 flex flex-col justify-between">
+                            <div class="flex items-start justify-between">
+                                <span class="rounded-full bg-white/75 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-tertiary">Conference</span>
+                                <span class="flex h-14 w-14 items-center justify-center rounded-[1.35rem] bg-white/78 text-tertiary shadow-xl shadow-tertiary/10">
+                                    <span class="material-symbols-outlined text-[1.9rem]">play_arrow</span>
+                                </span>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-white/80">Broadcast 04</div>
+                                <div class="mt-2 text-2xl font-headline tracking-tight text-white">PIVOT: Courage To Shift</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-secondary">31 min watch</div>
+                        <p class="mt-3 text-base leading-relaxed text-on-surface-variant">Revisit the energy behind intentional vision and spirit-led movement.</p>
+                    </div>
+                </article>
+            </button>
+
+            <button type="button" class="video-trigger fade-up group text-left" data-index="4">
+                <article class="overflow-hidden rounded-[2rem] bg-surface-container-lowest shadow-[0_28px_56px_-28px_rgba(140,112,119,0.18)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_44px_90px_-30px_rgba(179,10,98,0.24)]">
+                    <div class="video-tile relative aspect-[4/3] overflow-hidden bg-[linear-gradient(135deg,rgba(179,10,98,0.18),rgba(224,189,203,0.46)),radial-gradient(circle_at_18%_20%,rgba(255,255,255,0.9),transparent_38%)]">
+                        <div class="absolute inset-0 p-7 flex flex-col justify-between">
+                            <div class="flex items-start justify-between">
+                                <span class="rounded-full bg-white/75 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-primary">Theme</span>
+                                <span class="flex h-14 w-14 items-center justify-center rounded-[1.35rem] bg-white/78 text-primary shadow-xl shadow-primary/10">
+                                    <span class="material-symbols-outlined text-[1.9rem]">play_arrow</span>
+                                </span>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-white/80">Broadcast 05</div>
+                                <div class="mt-2 text-2xl font-headline tracking-tight text-white">BOLDLY GO! Theme Launch</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-secondary">16 min watch</div>
+                        <p class="mt-3 text-base leading-relaxed text-on-surface-variant">A theme message grounded in Joshua 3:4B and forward faith.</p>
+                    </div>
+                </article>
+            </button>
+
+            <button type="button" class="video-trigger fade-up group text-left" data-index="5">
+                <article class="overflow-hidden rounded-[2rem] bg-surface-container-lowest shadow-[0_28px_56px_-28px_rgba(140,112,119,0.18)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_44px_90px_-30px_rgba(179,10,98,0.24)]">
+                    <div class="video-tile relative aspect-[4/3] overflow-hidden bg-[linear-gradient(135deg,rgba(111,84,96,0.22),rgba(255,176,201,0.42)),radial-gradient(circle_at_top_right,rgba(255,255,255,0.92),transparent_44%)]">
+                        <div class="absolute inset-0 p-7 flex flex-col justify-between">
+                            <div class="flex items-start justify-between">
+                                <span class="rounded-full bg-white/75 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-tertiary">Archive</span>
+                                <span class="flex h-14 w-14 items-center justify-center rounded-[1.35rem] bg-white/78 text-tertiary shadow-xl shadow-tertiary/10">
+                                    <span class="material-symbols-outlined text-[1.9rem]">play_arrow</span>
+                                </span>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-white/80">Broadcast 06</div>
+                                <div class="mt-2 text-2xl font-headline tracking-tight text-white">Open Handed Living</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-7">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-secondary">20 min watch</div>
+                        <p class="mt-3 text-base leading-relaxed text-on-surface-variant">A closing archive session on surrender, trust, and steady spiritual maturity.</p>
+                    </div>
+                </article>
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="relative overflow-hidden bg-surface py-24 md:py-32">
+    <div class="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-primary-fixed/35 blur-[120px]"></div>
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12">
+        <div class="signature-gradient relative overflow-hidden rounded-[3rem] p-10 text-on-primary shadow-[0_56px_120px_-28px_rgba(179,10,98,0.3)] md:p-16">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.22),_transparent_36%)]"></div>
+            <div class="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+                <div class="max-w-3xl">
+                    <span class="mb-5 block text-xs font-label font-bold uppercase tracking-[0.3em] text-primary-fixed">Stay With The Message</span>
+                    <h2 class="text-4xl leading-tight tracking-tight md:text-6xl">Watch live, revisit the archive, and keep moving <span class="serif italic">boldly.</span></h2>
+                    <p class="mt-6 text-lg leading-relaxed text-white/85 md:text-xl">
+                        This page is designed as a calm, high-trust media sanctuary for ongoing teaching and prayer moments.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4 sm:flex-row">
+                    <a href="#live-player" class="inline-flex items-center justify-center rounded-full bg-surface px-8 py-4 text-base font-bold text-primary transition-transform duration-300 hover:scale-[1.02]">Return To Player</a>
+                    <a href="contact.html" class="inline-flex items-center justify-center rounded-full border border-white/25 px-8 py-4 text-base font-bold text-white transition-colors duration-300 hover:bg-white/10">Request Prayer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer class="bg-surface-container-low py-16">
+    <div class="container mx-auto px-12 max-w-[1600px]">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+            <div class="md:col-span-5">
+                <div class="mb-8">
+                    <img src="hsss-logo.svg" alt="He Said She Said Ministries" class="h-12 w-auto mb-4">
+                    <div class="font-logo font-bold text-2xl text-primary">He Said She Said Ministries</div>
+                </div>
+                <p class="text-lg text-on-surface-variant max-w-sm font-body leading-relaxed">
+                    Building a digital sanctuary for modern believers to connect, study, and grow together in grace.
+                </p>
+            </div>
+            <div class="md:col-span-2">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Explore</h4>
+                <ul class="space-y-4 text-base">
+                    <li><a href="index.html" class="text-on-surface/70 hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-on-surface/70 hover:text-primary transition-colors">About</a></li>
+                    <li><a href="livestream.html" class="text-on-surface/70 hover:text-primary transition-colors">Livestream</a></li>
+                    <li><a href="coaching.html" class="text-on-surface/70 hover:text-primary transition-colors">Coaching</a></li>
+                    <li><a href="contact.html" class="text-on-surface/70 hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Legal</h4>
+                <ul class="space-y-4 text-base">
+                    <li><a href="#" class="text-on-surface/70 hover:text-primary transition-colors">Privacy</a></li>
+                    <li><a href="#" class="text-on-surface/70 hover:text-primary transition-colors">Terms</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Follow</h4>
+                <div class="flex gap-4">
+                    <a href="index.html" class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-sm">
+                        <span class="material-symbols-outlined text-xl">home</span>
+                    </a>
+                    <a href="mailto:hsssat@outlook.com" class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-sm">
+                        <span class="material-symbols-outlined text-xl">mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="pt-10 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-label tracking-[0.25em] uppercase font-bold text-on-surface/30">
+            <div>© 2024 He Said She Said Ministries</div>
+            <div class="italic text-primary/60 normal-case tracking-normal text-sm">"For you have not passed this way before." — Joshua 3:4</div>
+            <div class="hover:text-primary transition-colors">
+                <a href="https://servestrategy.com" class="underline underline-offset-4">Design by ServeStrategy.com</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="video-modal" class="video-modal fixed inset-0 z-[100] flex items-center justify-center bg-[#2a151f]/60 p-4 backdrop-blur-xl md:p-8" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="absolute inset-0" data-close-modal="true"></div>
+    <div class="modal-panel relative z-10 w-full max-w-6xl overflow-hidden rounded-[2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.84))] shadow-[0_48px_120px_-36px_rgba(42,21,31,0.55)] backdrop-blur-xl">
+        <div class="grid gap-6 p-4 md:p-6">
+            <div class="flex items-center justify-between gap-4">
+                <div>
+                    <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-primary">Broadcast Viewer</div>
+                    <h2 id="modal-title" class="mt-2 text-3xl tracking-tight md:text-4xl">Broadcast Title</h2>
+                </div>
+                <button type="button" class="flex h-12 w-12 items-center justify-center rounded-full bg-white/75 text-on-surface transition-colors hover:bg-primary hover:text-on-primary" aria-label="Close video viewer" data-close-modal="true">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div class="grid gap-6 lg:grid-cols-[1fr_260px]">
+                <div class="overflow-hidden rounded-[1.75rem] bg-black player-shell aspect-video">
+                    <iframe id="modal-frame" src="" title="Selected broadcast video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="flex flex-col justify-between rounded-[1.75rem] bg-white/55 p-6">
+                    <div>
+                        <div id="modal-tag" class="text-xs font-label font-bold uppercase tracking-[0.28em] text-secondary">Broadcast</div>
+                        <p id="modal-description" class="mt-4 text-base leading-relaxed text-on-surface-variant">Description</p>
+                    </div>
+                    <div class="mt-8 flex items-center gap-3">
+                        <button type="button" id="modal-prev" class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-surface-container px-4 py-3 text-sm font-bold text-on-surface transition-colors hover:bg-surface-container-high" aria-label="Previous video">
+                            <span class="material-symbols-outlined text-base">west</span>
+                            Prev
+                        </button>
+                        <button type="button" id="modal-next" class="inline-flex flex-1 items-center justify-center gap-2 rounded-full signature-gradient px-4 py-3 text-sm font-bold text-on-primary" aria-label="Next video">
+                            Next
+                            <span class="material-symbols-outlined text-base">east</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll('.fade-up').forEach((element) => observer.observe(element));
+
+    const videos = [
+        {
+            title: 'Morning Prayer Reset',
+            tag: 'Prayer',
+            description: 'A quiet return to gratitude, alignment, and communal intercession for the start of the day.',
+            embed: 'https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?autoplay=1&rel=0'
+        },
+        {
+            title: 'When Trust Leads First',
+            tag: 'Teaching',
+            description: 'A teaching on obedience before certainty and peace before proof, rooted in faithful movement.',
+            embed: 'https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?autoplay=1&rel=0&start=34'
+        },
+        {
+            title: 'Healing The Inner Conversation',
+            tag: 'Live Replay',
+            description: 'A reflective session on identity, self-talk, and learning to agree with the voice of God.',
+            embed: 'https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?autoplay=1&rel=0&start=64'
+        },
+        {
+            title: 'PIVOT: Courage To Shift',
+            tag: 'Conference',
+            description: 'A replay centered on intentional vision, courageous movement, and making the shift now.',
+            embed: 'https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?autoplay=1&rel=0&start=92'
+        },
+        {
+            title: 'BOLDLY GO! Theme Launch',
+            tag: 'Theme',
+            description: 'A theme message grounded in Joshua 3:4B and the ministry call to move into new territory faithfully.',
+            embed: 'https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?autoplay=1&rel=0&start=126'
+        },
+        {
+            title: 'Open Handed Living',
+            tag: 'Archive',
+            description: 'A closing archive session on surrender, trust, and steady spiritual maturity in the everyday walk.',
+            embed: 'https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?autoplay=1&rel=0&start=160'
+        }
+    ];
+
+    const modal = document.getElementById('video-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalTag = document.getElementById('modal-tag');
+    const modalDescription = document.getElementById('modal-description');
+    const modalFrame = document.getElementById('modal-frame');
+    const modalPrev = document.getElementById('modal-prev');
+    const modalNext = document.getElementById('modal-next');
+    const triggers = document.querySelectorAll('.video-trigger');
+    let activeIndex = 0;
+
+    function renderVideo(index) {
+        const video = videos[index];
+        activeIndex = index;
+        modalTitle.textContent = video.title;
+        modalTag.textContent = video.tag;
+        modalDescription.textContent = video.description;
+        modalFrame.src = video.embed;
+    }
+
+    function openModal(index) {
+        renderVideo(index);
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('overflow-hidden');
+    }
+
+    function closeModal() {
+        modal.setAttribute('aria-hidden', 'true');
+        modalFrame.src = '';
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    function showNext(step) {
+        const nextIndex = (activeIndex + step + videos.length) % videos.length;
+        renderVideo(nextIndex);
+    }
+
+    triggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+            openModal(Number(trigger.dataset.index));
+        });
+    });
+
+    modalPrev.addEventListener('click', () => showNext(-1));
+    modalNext.addEventListener('click', () => showNext(1));
+
+    modal.querySelectorAll('[data-close-modal="true"]').forEach((element) => {
+        element.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (modal.getAttribute('aria-hidden') === 'true') {
+            return;
+        }
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+        if (event.key === 'ArrowRight') {
+            showNext(1);
+        }
+        if (event.key === 'ArrowLeft') {
+            showNext(-1);
+        }
+    });
+</script>
+</body>
+</html>

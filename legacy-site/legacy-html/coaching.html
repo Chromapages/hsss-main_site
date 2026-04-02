@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coaching | He Said She Said Ministries</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed": "#ffd9e3",
+                    "on-tertiary-fixed": "#2a151f",
+                    "tertiary-fixed-dim": "#e0bdcb",
+                    "surface-variant": "#e5e2e1",
+                    "surface-bright": "#fcf9f8",
+                    "surface": "#fcf9f8",
+                    "on-primary-fixed": "#3e001e",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed": "#ffd8e7",
+                    "surface-container-highest": "#e5e2e1",
+                    "tertiary-fixed": "#fdd9e7",
+                    "on-secondary-container": "#7b345a",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-container-high": "#eae7e7",
+                    "tertiary-container": "#8a6d79",
+                    "tertiary": "#6f5460",
+                    "on-background": "#1c1b1b",
+                    "outline-variant": "#dfbec6",
+                    "inverse-primary": "#ffb0c9",
+                    "background": "#fcf9f8",
+                    "surface-container": "#f0eded",
+                    "on-secondary-fixed-variant": "#742d54",
+                    "on-secondary-fixed": "#3d0026",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#d5307b",
+                    "secondary-fixed-dim": "#ffafd4",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary": "#b30a62",
+                    "on-primary-container": "#fffbff",
+                    "secondary": "#90456c",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#584047",
+                    "on-surface": "#1c1b1b",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed-variant": "#8e004c",
+                    "surface-tint": "#b60f65",
+                    "on-tertiary-fixed-variant": "#59404b",
+                    "on-tertiary-container": "#fffbff",
+                    "secondary-container": "#fea2ce",
+                    "primary-fixed-dim": "#ffb0c9",
+                    "outline": "#8c7077"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
+        .signature-gradient { background: linear-gradient(135deg, #b30a62 0%, #d5307b 100%); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .font-logo { font-family: 'Playfair Display', serif; }
+        .soft-panel {
+            background: linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.72) 100%);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 32px 80px -28px rgba(140, 112, 119, 0.25);
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 700ms ease, transform 700ms ease;
+        }
+        .fade-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes drift {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -18px, 0); }
+        }
+        .drift { animation: drift 9s ease-in-out infinite; }
+</style>
+</head>
+<body class="bg-surface text-on-surface">
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl transition-all duration-300">
+<nav class="flex justify-between items-center px-6 md:px-12 py-6 max-w-[1600px] mx-auto">
+<div class="flex items-center gap-3">
+    <a href="index.html" class="flex items-center gap-3">
+        <img src="hsss-logo.svg" alt="He Said She Said Ministries" class="h-10 w-auto">
+        <span class="font-logo font-bold text-lg text-primary hidden lg:block">He Said She Said Ministries</span>
+    </a>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="index.html">Home</a>
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="about.html">About</a>
+<a class="text-on-surface/70 hover:text-primary transition-all duration-300" href="livestream.html">Livestream</a>
+<a class="text-primary font-bold border-b-2 border-primary-fixed hover:text-primary-container transition-all duration-300" href="coaching.html">Coaching</a>
+<a href="contact.html">
+    <button class="signature-gradient text-on-primary px-8 py-3 rounded-full font-label font-bold tracking-tight hover:scale-95 duration-300 transition-all shadow-lg shadow-primary/10">
+        Contact
+    </button>
+</a>
+</div>
+</nav>
+</header>
+
+<main class="pt-16">
+<section class="relative overflow-hidden bg-surface py-24 md:py-32">
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-x-0 top-0 h-[80%] bg-[radial-gradient(circle_at_top_left,_rgba(255,217,227,0.9),_rgba(252,249,248,0)_50%),radial-gradient(circle_at_80%_18%,_rgba(254,162,206,0.28),_rgba(252,249,248,0)_35%),linear-gradient(180deg,_#fcf9f8_0%,_#f6f3f2_100%)]"></div>
+        <div class="absolute top-28 right-[10%] h-64 w-64 rounded-full bg-white/40 blur-3xl drift"></div>
+        <div class="absolute left-[5%] bottom-16 h-80 w-80 rounded-full bg-primary-fixed/30 blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12">
+        <div class="grid items-end gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+            <div class="fade-up">
+                <span class="mb-8 block text-xs font-label font-bold uppercase tracking-[0.32em] text-primary">Faith-Based Coaching Hub</span>
+                <h1 class="max-w-4xl text-5xl leading-[0.95] tracking-tight text-on-surface md:text-7xl lg:text-[6.4rem]">
+                    Focus Your Vision.
+                    <span class="serif italic text-primary">Reclaim Your Purpose.</span>
+                </h1>
+                <p class="mt-8 max-w-2xl text-lg leading-relaxed text-on-surface-variant md:text-2xl">
+                    Coaching for women and men who are ready to heal deeply, think clearly, and execute faithfully. This hub is built for transformation that is spiritual, practical, and personal.
+                </p>
+                <div class="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center">
+                    <a href="#contact-strip" class="signature-gradient inline-flex items-center justify-center rounded-full px-10 py-5 text-lg font-bold text-on-primary shadow-2xl shadow-primary/20 transition-all duration-300 hover:scale-[1.02]">
+                        Start The Conversation
+                    </a>
+                    <a href="#services" class="group inline-flex items-center gap-3 text-lg font-bold text-on-surface">
+                        <span class="border-b-2 border-primary-fixed pb-1 transition-all duration-300 group-hover:border-primary">Explore The Programs</span>
+                        <span class="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1">east</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="fade-up lg:pl-10">
+                <div class="relative">
+                    <div class="soft-panel rounded-[3rem] border border-white/40 p-3 overflow-hidden shadow-2xl">
+                        <div class="aspect-[4/5] rounded-[2.5rem] bg-[linear-gradient(135deg,rgba(179,10,98,0.18),rgba(254,162,206,0.42)),radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_42%)] p-8 flex flex-col justify-between">
+                            <div class="flex items-start justify-between">
+                                <span class="inline-flex items-center rounded-full bg-white/80 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-primary">High-Touch Guidance</span>
+                                <span class="flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-white/70 text-primary shadow-lg shadow-primary/10">
+                                    <span class="material-symbols-outlined text-[2rem]">neurology</span>
+                                </span>
+                            </div>
+                            <div>
+                                <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-primary/70">Healing + Execution</div>
+                                <h2 class="mt-3 text-4xl leading-tight tracking-tight text-on-surface">Spiritual clarity that turns into faithful action.</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-10 -left-8 rounded-[1.75rem] bg-white/80 px-6 py-5 shadow-[0_24px_48px_-20px_rgba(140,112,119,0.22)] backdrop-blur-md">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.28em] text-on-surface/45">Designed For</div>
+                        <div class="mt-2 text-xl font-bold text-on-surface">Women &amp; Men Seeking Wholeness</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact-strip" class="bg-surface-container-low py-8">
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12">
+        <div class="soft-panel fade-up rounded-[2rem] p-6 md:p-8">
+            <div class="grid gap-6 lg:grid-cols-[1fr_auto_auto] lg:items-center">
+                <div>
+                    <div class="text-xs font-label font-bold uppercase tracking-[0.3em] text-primary">Direct Contact For Session Inquiries</div>
+                    <p class="mt-3 max-w-2xl text-base leading-relaxed text-on-surface-variant md:text-lg">
+                        B.A.E. and C.O.R.E. are high-touch coaching experiences. The fastest next step is a direct call or email to begin the conversation.
+                    </p>
+                </div>
+                <a href="tel:8554743724" class="inline-flex items-center justify-center rounded-full bg-surface-container-lowest px-8 py-4 text-base font-bold text-on-surface shadow-sm transition-all duration-300 hover:-translate-y-1 hover:text-primary">
+                    855-474-3724
+                </a>
+                <a href="mailto:hsssat@outlook.com?subject=Coaching%20Inquiry" class="signature-gradient inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-bold text-on-primary shadow-xl shadow-primary/20 transition-all duration-300 hover:scale-[1.02]">
+                    hsssat@outlook.com
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="bg-surface py-24 md:py-32">
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12">
+        <div class="mb-16 max-w-3xl fade-up">
+            <span class="mb-6 block text-xs font-label font-bold uppercase tracking-[0.32em] text-primary">Services Showcase</span>
+            <h2 class="text-4xl leading-tight tracking-tight md:text-6xl">Coaching built for both <span class="serif italic text-secondary">inner healing</span> and practical movement.</h2>
+        </div>
+
+        <div class="grid gap-8 xl:grid-cols-2">
+            <article class="fade-up rounded-[2.5rem] bg-surface-container-low p-8 md:p-10 shadow-[0_30px_64px_-28px_rgba(140,112,119,0.16)]">
+                <div class="flex items-start justify-between gap-6">
+                    <div>
+                        <span class="inline-flex items-center rounded-full bg-primary-fixed/70 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-primary">3-Week Intensive</span>
+                        <h3 class="mt-6 text-4xl tracking-tight text-on-surface">B.A.E.</h3>
+                        <p class="mt-2 text-sm font-label uppercase tracking-[0.22em] text-secondary">Behavioral Assessment Exercises</p>
+                    </div>
+                    <span class="flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-surface-container-lowest text-primary shadow-sm">
+                        <span class="material-symbols-outlined text-[2rem]">psychology_alt</span>
+                    </span>
+                </div>
+                <p class="mt-8 text-lg leading-relaxed text-on-surface-variant">
+                    A three-week immersive coaching assessment designed to uncover behavioral patterns, expose hidden resistance, and create a faith-rooted strategy for change.
+                </p>
+                <div class="mt-10 grid gap-4 sm:grid-cols-3">
+                    <div class="rounded-[1.5rem] bg-surface-container-lowest p-5">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-on-surface/45">Week 1</div>
+                        <div class="mt-2 text-lg font-bold text-on-surface">Assessment</div>
+                    </div>
+                    <div class="rounded-[1.5rem] bg-surface-container-lowest p-5">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-on-surface/45">Week 2</div>
+                        <div class="mt-2 text-lg font-bold text-on-surface">Insight</div>
+                    </div>
+                    <div class="rounded-[1.5rem] bg-surface-container-lowest p-5">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-on-surface/45">Week 3</div>
+                        <div class="mt-2 text-lg font-bold text-on-surface">Action Plan</div>
+                    </div>
+                </div>
+                <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+                    <a href="mailto:hsssat@outlook.com?subject=B.A.E.%20Coaching%20Inquiry" class="signature-gradient inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-bold text-on-primary">Email About B.A.E.</a>
+                    <a href="tel:8554743724" class="inline-flex items-center justify-center rounded-full bg-surface-container-lowest px-8 py-4 text-base font-bold text-on-surface">Call For Details</a>
+                </div>
+            </article>
+
+            <article class="fade-up rounded-[2.5rem] bg-surface-container-low p-8 md:p-10 shadow-[0_30px_64px_-28px_rgba(140,112,119,0.16)]">
+                <div class="flex items-start justify-between gap-6">
+                    <div>
+                        <span class="inline-flex items-center rounded-full bg-secondary-fixed/70 px-4 py-2 text-[11px] font-label font-bold uppercase tracking-[0.28em] text-secondary">6-Week Program</span>
+                        <h3 class="mt-6 text-4xl tracking-tight text-on-surface">C.O.R.E.</h3>
+                        <p class="mt-2 text-sm font-label uppercase tracking-[0.22em] text-secondary">Communicating Objectives, Resolve, Execution</p>
+                    </div>
+                    <span class="flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-surface-container-lowest text-secondary shadow-sm">
+                        <span class="material-symbols-outlined text-[2rem]">track_changes</span>
+                    </span>
+                </div>
+                <p class="mt-8 text-lg leading-relaxed text-on-surface-variant">
+                    A six-week extensive coaching course for people who need more than inspiration. C.O.R.E. aligns communication, resolve, and execution with God-centered direction and disciplined follow-through.
+                </p>
+                <div class="mt-10 grid gap-4 sm:grid-cols-3">
+                    <div class="rounded-[1.5rem] bg-surface-container-lowest p-5">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-on-surface/45">Focus</div>
+                        <div class="mt-2 text-lg font-bold text-on-surface">Objectives</div>
+                    </div>
+                    <div class="rounded-[1.5rem] bg-surface-container-lowest p-5">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-on-surface/45">Middle</div>
+                        <div class="mt-2 text-lg font-bold text-on-surface">Resolve</div>
+                    </div>
+                    <div class="rounded-[1.5rem] bg-surface-container-lowest p-5">
+                        <div class="text-xs font-label font-bold uppercase tracking-[0.24em] text-on-surface/45">Outcome</div>
+                        <div class="mt-2 text-lg font-bold text-on-surface">Execution</div>
+                    </div>
+                </div>
+                <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+                    <a href="mailto:hsssat@outlook.com?subject=C.O.R.E.%20Coaching%20Inquiry" class="signature-gradient inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-bold text-on-primary">Email About C.O.R.E.</a>
+                    <a href="tel:8554743724" class="inline-flex items-center justify-center rounded-full bg-surface-container-lowest px-8 py-4 text-base font-bold text-on-surface">Call For Details</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="bg-surface-container-low py-24 md:py-32">
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div class="fade-up">
+                <div class="rounded-[2.5rem] bg-[linear-gradient(135deg,rgba(179,10,98,0.12),rgba(254,162,206,0.28))] p-8 md:p-10">
+                    <span class="mb-5 block text-xs font-label font-bold uppercase tracking-[0.3em] text-primary">The Healing Path</span>
+                    <h2 class="text-4xl leading-tight tracking-tight md:text-5xl">From anxiety and depression to <span class="serif italic text-secondary">God-centered trust.</span></h2>
+                    <p class="mt-6 text-lg leading-relaxed text-on-surface-variant">
+                        One client came into HSSS in confusion, anxiety, and depression. Through trust-centered guidance, clarity emerged, confusion was broken, and the next steps became visible again.
+                    </p>
+                </div>
+            </div>
+            <div class="fade-up">
+                <div class="soft-panel rounded-[2.5rem] p-8 md:p-12">
+                    <span class="material-symbols-outlined text-primary text-5xl opacity-50">format_quote</span>
+                    <blockquote class="mt-6 text-3xl leading-tight tracking-tight text-on-surface md:text-5xl">
+                        “By the end of the session God revealed that my anxiety was fed by the lack of trust I had in God. I gained clarity and confusion was cancelled out.”
+                    </blockquote>
+                    <div class="mt-8 text-sm font-label font-bold uppercase tracking-[0.28em] text-on-surface/45">Faith Coaching Testimony</div>
+                    <p class="mt-6 text-base leading-relaxed text-on-surface-variant">
+                        This is the heart of the coaching hub: helping people heal what is hidden, rebuild trust, and move forward with practical, spirit-led execution.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="relative overflow-hidden bg-surface py-24 md:py-32">
+    <div class="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-primary-fixed/35 blur-[120px]"></div>
+    <div class="container mx-auto max-w-[1600px] px-6 md:px-12">
+        <div class="signature-gradient relative overflow-hidden rounded-[3rem] p-10 text-on-primary shadow-[0_56px_120px_-28px_rgba(179,10,98,0.3)] md:p-16">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.22),_transparent_36%)]"></div>
+            <div class="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+                <div class="max-w-3xl">
+                    <span class="mb-5 block text-xs font-label font-bold uppercase tracking-[0.3em] text-primary-fixed">Ready To Begin?</span>
+                    <h2 class="text-4xl leading-tight tracking-tight md:text-6xl">Ready to begin your <span class="serif italic">journey?</span></h2>
+                    <p class="mt-6 text-lg leading-relaxed text-white/85 md:text-xl">
+                        Reach out directly for session inquiries and let’s discern the right next step for your healing and growth.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4 sm:flex-row">
+                    <a href="tel:8554743724" class="inline-flex items-center justify-center rounded-full bg-surface px-8 py-4 text-base font-bold text-primary transition-transform duration-300 hover:scale-[1.02]">Call 855-474-3724</a>
+                    <a href="mailto:hsssat@outlook.com?subject=Coaching%20Inquiry" class="inline-flex items-center justify-center rounded-full border border-white/25 px-8 py-4 text-base font-bold text-white transition-colors duration-300 hover:bg-white/10">Email For Coaching</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer class="bg-surface-container-low py-16">
+    <div class="container mx-auto px-12 max-w-[1600px]">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+            <div class="md:col-span-5">
+                <div class="mb-8">
+                    <img src="hsss-logo.svg" alt="He Said She Said Ministries" class="h-12 w-auto mb-4">
+                    <div class="font-logo font-bold text-2xl text-primary">He Said She Said Ministries</div>
+                </div>
+                <p class="text-lg text-on-surface-variant max-w-sm font-body leading-relaxed">
+                    Building a digital sanctuary for modern believers to connect, study, and grow together in grace.
+                </p>
+            </div>
+            <div class="md:col-span-2">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Explore</h4>
+                <ul class="space-y-4">
+                    <li><a href="index.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="about.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">About</a></li>
+                    <li><a href="livestream.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Livestream</a></li>
+                    <li><a href="coaching.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Coaching</a></li>
+                    <li><a href="contact.html" class="text-base text-on-surface/70 hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Legal</h4>
+                <ul class="space-y-4">
+                    <li><a href="#" class="text-base text-on-surface/70 hover:text-primary transition-colors">Privacy</a></li>
+                    <li><a href="#" class="text-base text-on-surface/70 hover:text-primary transition-colors">Terms</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3">
+                <h4 class="text-xs font-label uppercase tracking-[0.2em] text-on-surface/40 font-bold mb-8">Follow</h4>
+                <div class="flex gap-4">
+                    <a href="index.html" class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-sm">
+                        <span class="material-symbols-outlined text-xl">home</span>
+                    </a>
+                    <a href="mailto:hsssat@outlook.com" class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-sm">
+                        <span class="material-symbols-outlined text-xl">mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="pt-10 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-label tracking-[0.25em] uppercase font-bold text-on-surface/30">
+            <div>© 2024 He Said She Said Ministries</div>
+            <div class="italic text-primary/60 normal-case tracking-normal text-sm">"For you have not passed this way before." — Joshua 3:4</div>
+            <div class="hover:text-primary transition-colors">
+                <a href="https://servestrategy.com" class="underline underline-offset-4">Design by ServeStrategy.com</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll('.fade-up').forEach((element) => observer.observe(element));
+</script>
+</body>
+</html>

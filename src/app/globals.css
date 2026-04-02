@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #b30a62;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #d5307b;
+  --color-on-primary-container: #fffbff;
+  --color-primary-fixed: #ffd9e3;
+  --color-primary-fixed-dim: #ffb0c9;
+  
+  --color-secondary: #90456c;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #fea2ce;
+  --color-on-secondary-container: #7b345a;
+  --color-secondary-fixed: #ffd8e7;
+  --color-secondary-fixed-dim: #ffafd4;
+  
+  --color-tertiary: #6f5460;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #8a6d79;
+  --color-on-tertiary-container: #fffbff;
+  --color-tertiary-fixed: #fdd9e7;
+  --color-tertiary-fixed-dim: #e0bdcb;
+  
+  --color-surface: #fcf9f8;
+  --color-on-surface: #1c1b1b;
+  --color-surface-variant: #e5e2e1;
+  --color-on-surface-variant: #584047;
+  --color-surface-dim: #dcd9d9;
+  --color-surface-bright: #fcf9f8;
+  --color-surface-container: #f0eded;
+  --color-surface-container-low: #f6f3f2;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #eae7e7;
+  --color-surface-container-highest: #e5e2e1;
+  
+  --color-background: #fcf9f8;
+  --color-on-background: #1c1b1b;
+  
+  --color-outline: #8c7077;
+  --color-outline-variant: #dfbec6;
+  
+  --color-inverse-surface: #313030;
+  --color-inverse-on-surface: #f3f0ef;
+  --color-inverse-primary: #ffb0c9;
+  
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* Fonts */
+  --font-headline: "Newsreader", serif;
+  --font-body: "Manrope", sans-serif;
+  --font-label: "Manrope", sans-serif;
+  --font-logo: "Playfair Display", serif;
+
+  /* Animations */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+:root {
+  --background: var(--color-background);
+  --foreground: var(--color-on-background);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .serif {
+  font-family: var(--font-headline);
+}
+
+.font-logo {
+  font-family: var(--font-logo);
+}
+
+.signature-gradient {
+  background: linear-gradient(135deg, #b30a62 0%, #d5307b 100%);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+.marquee-track {
+  animation: marquee 60s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Legacy Utility Classes */
+.soft-panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.72) 100%);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 32px 80px -28px rgba(140, 112, 119, 0.25);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -18px, 0); }
+}
+
+.drift {
+  animation: drift 9s ease-in-out infinite;
+}
+
+.field-shell {
+  position: relative;
+}
+
+.field-shell::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(223,190,198,0.55), rgba(179,10,98,0.95));
+  transform: scaleX(0.18);
+  transform-origin: left center;
+  transition: transform 250ms ease;
+}
+
+.field-shell:focus-within::after {
+  transform: scaleX(1);
+}
+
+.contact-input {
+  background: rgba(246, 243, 242, 0.72);
+  border: 0 !important;
+  border-bottom: 2px solid rgba(223, 190, 198, 0.65) !important;
+  border-radius: 1.25rem 1.25rem 0 0 !important;
+  color: #1c1b1b !important;
+  transition: transform 250ms ease, background-color 250ms ease !important;
+}
+
+.contact-input:focus {
+  background: rgba(255,255,255,0.95) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transform: translateY(-2px);
+}
+
+.contact-input::placeholder {
+  color: rgba(88, 64, 71, 0.78);
+}
