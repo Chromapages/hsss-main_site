@@ -25,26 +25,25 @@ export default function Contact() {
           <div className="absolute left-[4%] top-48 h-72 w-72 rounded-full bg-primary-fixed/40 blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto max-w-[1600px] px-6 md:px-12 pt-24 md:pt-32 pb-16 md:pb-24">
+        <div className="container mx-auto max-w-[1600px] px-5 md:px-12 pt-10 md:pt-32 pb-16 md:pb-24">
           <div className="grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="fade-up">
-              <span className="mb-8 block text-xs font-label font-bold uppercase tracking-[0.32em] text-primary">Contact The Sanctuary</span>
-              <h1 className="max-w-4xl text-5xl leading-[0.95] tracking-tight text-on-surface md:text-7xl lg:text-[6.5rem] font-headline">
-                Let&apos;s Begin the
-                <br/>
+              <span className="mb-5 md:mb-8 block text-xs font-label font-bold uppercase tracking-[0.32em] text-primary">Contact The Sanctuary</span>
+              <h1 className="max-w-4xl text-4xl md:text-5xl lg:text-7xl xl:text-[6.5rem] leading-[1.0] md:leading-[0.95] tracking-tight text-on-surface font-headline">
+                Let&apos;s Begin the{" "}
                 <span className="serif italic text-primary">Conversation.</span>
               </h1>
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-on-surface-variant md:text-2xl font-body">
+              <p className="mt-5 md:mt-8 max-w-2xl text-base md:text-lg lg:text-2xl leading-relaxed text-on-surface-variant font-body">
                 Reach out for prayer, questions, coaching inquiries, or your next step with He Said She Said Ministries. We made this page feel like an open door, not a cold intake form.
               </p>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-on-surface-variant font-body">
                 Looking specifically for B.A.E. or C.O.R.E. support? Visit the <a href="/coaching" className="font-bold text-primary hover:underline transition-all">Coaching Hub</a> for a focused overview, then contact the ministry directly.
               </p>
-              <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center">
-                <a href="#contact-form" className="signature-gradient inline-flex items-center justify-center rounded-full px-10 py-5 text-lg font-bold text-on-primary shadow-2xl shadow-primary/20 transition-all duration-300 hover:scale-[1.02]">
+              <div className="mt-7 md:mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <a href="#contact-form" className="touch-press no-select signature-gradient inline-flex items-center justify-center rounded-full px-10 py-4 md:py-5 text-base md:text-lg font-bold text-on-primary shadow-2xl shadow-primary/20 transition-all duration-300 active:scale-95">
                   Send a Message
                 </a>
-                <a href="tel:8554743724" className="group inline-flex items-center gap-3 text-lg font-bold text-on-surface">
+                <a href="tel:8554743724" className="touch-press group inline-flex items-center gap-3 text-base md:text-lg font-bold text-on-surface">
                   <span className="border-b-2 border-primary-fixed pb-1 transition-all duration-300 group-hover:border-primary">Call 855-474-3724</span>
                   <span className="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1">call</span>
                 </a>
@@ -84,8 +83,8 @@ export default function Contact() {
       </section>
 
       {/* Expectation Section */}
-      <section className="bg-surface-container-low py-16 md:py-24">
-        <div className="container mx-auto max-w-[1600px] px-6 md:px-12">
+      <section className="bg-surface-container-low py-14 md:py-24">
+        <div className="container mx-auto max-w-[1600px] px-5 md:px-12">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] items-start">
             <div className="fade-up">
               <div className="h-full rounded-[2.5rem] bg-surface p-8 md:p-12 shadow-[0_32px_64px_-24px_rgba(140,112,119,0.14)] border border-outline-variant/10">
@@ -133,9 +132,9 @@ export default function Contact() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative overflow-hidden bg-surface py-24 md:py-32">
+      <section className="relative overflow-hidden bg-surface py-14 md:py-32">
         <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-primary-fixed/40 blur-[120px]"></div>
-        <div className="container mx-auto max-w-[1600px] px-6 md:px-12">
+        <div className="container mx-auto max-w-[1600px] px-5 md:px-12">
           <div className="signature-gradient relative overflow-hidden rounded-[3rem] p-10 text-on-primary shadow-[0_56px_120px_-28px_rgba(179,10,98,0.3)] md:p-16">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.22),_transparent_36%)]"></div>
             <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">

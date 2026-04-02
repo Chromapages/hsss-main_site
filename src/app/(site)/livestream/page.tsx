@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import FooterCTA from "@/components/FooterCTA";
 import { client } from "@/sanity/lib/client";
@@ -77,13 +76,13 @@ export default async function Livestream() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen pt-24">
-      <section className="py-24 bg-surface-container-low">
-        <div className="container mx-auto px-12 max-w-[1600px]">
-          <div className="bg-surface-container-lowest rounded-[3rem] p-12 md:p-24 shadow-2xl relative overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <div className="flex flex-col min-h-screen pt-4 md:pt-24">
+      <section className="py-10 md:py-24 bg-surface-container-low">
+        <div className="container mx-auto px-5 md:px-12 max-w-[1600px]">
+          <div className="bg-surface-container-lowest rounded-[1.75rem] md:rounded-[3rem] p-6 md:p-12 lg:p-24 shadow-2xl relative overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl mb-8 font-headline leading-tight">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl mb-5 md:mb-8 font-headline leading-tight">
                   {hero?.title || "Weekly Prayer"} <br/>
                   <span className="text-primary italic serif">{hero?.italicTitle || "& Bible Study."}</span>
                 </h2>
@@ -112,11 +111,11 @@ export default async function Livestream() {
                   <div className="text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant/70 mb-2">Zoom Meeting ID</div>
                   <div className="font-mono text-3xl font-bold text-on-surface mb-8">{zoom?.meetingId || "815 758 1664"}</div>
                   <div className="flex flex-col gap-4">
-                    <a 
-                      href={zoom?.zoomLink || "https://us06web.zoom.us/j/8157581664?omn=82461919629"} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="signature-gradient text-on-primary px-10 py-5 rounded-2xl font-bold text-lg inline-flex items-center gap-3 hover:scale-105 transition-all duration-300 w-full justify-center"
+                    <a
+                      href={zoom?.zoomLink || "https://us06web.zoom.us/j/8157581664?omn=82461919629"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="touch-press no-select signature-gradient text-on-primary px-10 py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg inline-flex items-center gap-3 active:scale-95 transition-all duration-300 w-full justify-center"
                     >
                       <span>Launch Zoom Now</span>
                       <span className="material-symbols-outlined">open_in_new</span>
@@ -155,14 +154,14 @@ export default async function Livestream() {
         </div>
       </section>
 
-      <section className="py-32 bg-surface">
-        <div className="container mx-auto px-12 max-w-[1600px]">
+      <section className="py-14 md:py-32 bg-surface">
+        <div className="container mx-auto px-5 md:px-12 max-w-[1600px]">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div className="max-w-2xl">
               <span className="text-primary font-label tracking-[0.3em] uppercase text-xs mb-4 block font-bold">
                 {gallery?.badge || "The Archives"}
               </span>
-              <h2 className="text-5xl md:text-7xl font-headline leading-tight">
+              <h2 className="text-3xl md:text-5xl lg:text-7xl font-headline leading-tight">
                 {gallery?.title || "Past Sessions"} <br/>
                 & <span className="italic text-secondary serif">{gallery?.italicTitle || "Teachings."}</span>
               </h2>

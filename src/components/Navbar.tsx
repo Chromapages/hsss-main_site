@@ -5,43 +5,60 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
+const navLinks = [
+  { name: "Home", href: "/", icon: "home" },
+  { name: "About", href: "/about", icon: "favorite" },
+  { name: "Live", href: "/livestream", icon: "live_tv" },
+  { name: "Coaching", href: "/coaching", icon: "self_improvement" },
+  { name: "Contact", href: "/contact", icon: "mail" },
+];
+
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Close drawer on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
-  // Lock scroll when drawer is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Livestream", href: "/livestream" },
-    { name: "Coaching", href: "/coaching" },
-  ];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      <header className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-surface-variant/10 shadow-sm">
-        <nav className="flex justify-between items-center px-6 md:px-12 py-4 max-w-[1600px] mx-auto">
-          <Link href="/" className="flex items-center gap-3 group">
+      {/* ── TOP BAR ── */}
+      <header
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-surface/90 backdrop-blur-xl border-b border-surface-variant/10 shadow-sm"
+            : "bg-surface/80 backdrop-blur-xl border-b border-surface-variant/10 shadow-sm"
+        }`}
+      >
+        <nav className="flex justify-between items-center px-5 md:px-12 py-3.5 md:py-4 max-w-[1600px] mx-auto">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group touch-press no-select">
             <Image
               src="/hsss-logo.svg"
               alt="He Said She Said Ministries"
-              width={36}
-              height={36}
-              className="h-9 w-auto group-hover:scale-105 transition-transform duration-300"
+              width={34}
+              height={34}
+              className="h-8 w-auto group-hover:scale-105 transition-transform duration-300"
             />
+            <span className="text-sm font-logo font-bold text-primary hidden sm:block md:hidden lg:block">
+              HSSS Ministries
+            </span>
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
@@ -57,85 +74,64 @@ export default function Navbar() {
               </Link>
             ))}
             <Link href="/contact">
-              <button className="signature-gradient text-on-primary px-8 py-3 rounded-full font-label font-bold tracking-tight hover:scale-95 duration-300 transition-all shadow-lg shadow-primary/20">
+              <button className="signature-gradient text-on-primary px-7 py-3 rounded-full font-label font-bold tracking-tight hover:scale-95 duration-300 transition-all shadow-lg shadow-primary/20 touch-press no-select">
                 Contact
               </button>
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden text-primary flex items-center justify-center w-10 h-10 rounded-xl hover:bg-surface-container transition-colors"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-          >
-            <span className="material-symbols-outlined text-3xl">
-              {menuOpen ? "close" : "menu"}
-            </span>
-          </button>
+          {/* Mobile: hamburger hidden — using bottom nav instead */}
+          {/* But keep a subtle icon for extra quick-access on mobile */}
         </nav>
       </header>
 
-      {/* Mobile drawer backdrop */}
-      {menuOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
-          onClick={() => setMenuOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Mobile drawer */}
-      <div
-        className={`fixed top-0 right-0 z-50 h-full w-72 bg-surface shadow-2xl md:hidden flex flex-col transition-transform duration-300 ease-in-out ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Navigation menu"
+      {/* ── MOBILE BOTTOM TAB BAR ── */}
+      <nav
+        className="md:hidden fixed bottom-0 left-0 right-0 z-50 bottom-nav bg-surface/95 backdrop-blur-xl border-t border-outline-variant/15 shadow-[0_-8px_32px_-8px_rgba(140,112,119,0.18)] no-select"
+        role="navigation"
+        aria-label="Main navigation"
       >
-        <div className="flex items-center justify-between px-6 py-5 border-b border-outline-variant/10">
-          <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2">
-            <Image src="/hsss-logo.svg" alt="HSSS" width={28} height={28} className="h-7 w-auto" />
-          </Link>
-          <button
-            onClick={() => setMenuOpen(false)}
-            className="text-on-surface/50 hover:text-primary transition-colors w-10 h-10 flex items-center justify-center rounded-xl hover:bg-surface-container"
-            aria-label="Close menu"
-          >
-            <span className="material-symbols-outlined">close</span>
-          </button>
-        </div>
+        <div className="flex items-stretch justify-around px-1">
+          {navLinks.map((link) => {
+            const isActive = link.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(link.href);
 
-        <nav className="flex flex-col gap-1 p-6 flex-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl text-base font-label font-bold transition-all duration-200 ${
-                pathname === link.href
-                  ? "bg-primary/10 text-primary"
-                  : "text-on-surface/70 hover:bg-surface-container hover:text-on-surface"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="p-6 border-t border-outline-variant/10">
-          <Link href="/contact" onClick={() => setMenuOpen(false)}>
-            <button className="signature-gradient text-on-primary w-full py-4 rounded-2xl font-label font-bold text-base shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all duration-300">
-              Contact
-            </button>
-          </Link>
-          <p className="text-center text-xs text-on-surface/30 font-label mt-6 tracking-widest uppercase">
-            He Said She Said Ministries
-          </p>
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`flex flex-col items-center justify-center gap-0.5 py-2.5 px-2 flex-1 min-w-0 touch-press transition-colors duration-200 ${
+                  isActive ? "text-primary" : "text-on-surface/45"
+                }`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <span
+                  className={`material-symbols-outlined text-[22px] leading-none transition-all duration-200 ${
+                    isActive
+                      ? "text-primary [font-variation-settings:'FILL'_1,'wght'_500,'GRAD'_0,'opsz'_24]"
+                      : "[font-variation-settings:'FILL'_0,'wght'_300,'GRAD'_0,'opsz'_24]"
+                  }`}
+                >
+                  {link.icon}
+                </span>
+                {/* Active indicator pill */}
+                {isActive && (
+                  <span className="block w-8 h-0.5 rounded-full bg-primary mt-0.5" />
+                )}
+                {!isActive && (
+                  <span className="block w-0 h-0.5 mt-0.5" />
+                )}
+                <span className={`text-[10px] font-label font-bold tracking-wide leading-none ${
+                  isActive ? "text-primary" : "text-on-surface/40"
+                }`}>
+                  {link.name}
+                </span>
+              </Link>
+            );
+          })}
         </div>
-      </div>
+      </nav>
     </>
   );
 }

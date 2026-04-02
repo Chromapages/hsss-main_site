@@ -1,0 +1,20 @@
+{
+  "name": "He Said She Said Ministries",
+  "short_name": "HSSS",
+  "description": "A faith-based navigation system designed to guide you into wholeness — spirit, soul, and body.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fcf9f8",
+  "theme_color": "#b30a62",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/hsss-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "religion", "education"],
+  "lang": "en-US"
+}

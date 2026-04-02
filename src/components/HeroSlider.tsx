@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import type { Image as SanityImage } from "sanity";
 
 import { urlFor } from "@/sanity/lib/image";
 
@@ -49,8 +48,8 @@ function SlideAction({
 }) {
   const className =
     variant === "primary"
-      ? "signature-gradient inline-flex min-h-11 items-center justify-center rounded-full px-10 py-5 text-lg font-bold text-on-primary shadow-2xl shadow-primary/20 transition-all duration-300 hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
-      : "group inline-flex min-h-11 items-center gap-4 text-lg font-bold text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
+      ? "signature-gradient touch-press no-select inline-flex min-h-[52px] items-center justify-center rounded-full px-8 py-4 text-base md:text-lg font-bold text-on-primary shadow-2xl shadow-primary/20 transition-all duration-300 hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+      : "touch-press no-select group inline-flex min-h-[52px] items-center gap-3 text-base md:text-lg font-bold text-on-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
 
   if (isExternalLink(href)) {
     return (
@@ -82,6 +81,10 @@ export default function HeroSlider({
   const [reducedMotion, setReducedMotion] = useState(false);
   const slidesLengthRef = useRef(slides.length);
 
+  // Touch swipe state
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+
   useEffect(() => {
     slidesLengthRef.current = slides.length;
   }, [slides.length]);
@@ -103,19 +106,46 @@ export default function HeroSlider({
     setActiveIndex((current) => (current + 1) % slidesLengthRef.current);
   }, []);
 
+  const goToPrev = useCallback(() => {
+    setActiveIndex((current) => (current - 1 + slidesLengthRef.current) % slidesLengthRef.current);
+  }, []);
+
   useEffect(() => {
     if (slides.length <= 1 || reducedMotion) return;
-
     const interval = window.setInterval(goToNext, autoRotateMs);
     return () => window.clearInterval(interval);
   }, [autoRotateMs, goToNext, reducedMotion, slides.length]);
+
+  // Swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    // Only swipe if horizontal movement dominates
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx < 0) goToNext();
+      else goToPrev();
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
 
   if (slides.length === 0) {
     return null;
   }
 
   return (
-    <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-surface pb-32 pt-40">
+    <section
+      className="relative flex min-h-[88svh] md:min-h-[90vh] items-end md:items-center overflow-hidden bg-surface pb-8 md:pb-32 pt-0 md:pt-40"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Background images */}
       <div className="absolute inset-0 z-0">
         {slides.map((slide, index) => {
           const lqip = slide.image?.asset?.metadata?.lqip;
@@ -135,10 +165,13 @@ export default function HeroSlider({
                 {...(index === 0 ? { fetchPriority: "high" } : { fetchPriority: "low" })}
                 placeholder={lqip ? "blur" : "empty"}
                 blurDataURL={lqip}
-                className="object-cover"
+                className="object-cover object-center md:object-center"
                 sizes="100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-surface/20" />
+              {/* Mobile: stronger bottom gradient for readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/85 to-surface/30 md:hidden" />
+              {/* Desktop: side gradient */}
+              <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-surface via-surface/90 to-surface/20" />
             </div>
           );
         })}
@@ -146,35 +179,36 @@ export default function HeroSlider({
 
       <div className="absolute -left-24 -top-24 z-0 h-96 w-96 animate-pulse rounded-full bg-primary-fixed opacity-20 blur-3xl" />
 
-      <div className="container relative z-20 mx-auto flex max-w-[1600px] flex-col gap-16 px-8 md:flex-row md:px-12">
+      <div className="container relative z-20 mx-auto flex max-w-[1600px] flex-col gap-10 md:gap-16 px-5 md:px-12">
         <div className="w-full md:w-1/2">
-          <div className="relative min-h-[520px]">
+          {/* Mobile: fixed height; desktop: same */}
+          <div className="relative min-h-[340px] md:min-h-[520px]">
             {slides.map((slide, index) => (
               <div
                 key={slide._id || `content-${index}`}
-                className={`absolute inset-0 flex flex-col justify-center transition-opacity ${reducedMotion ? "duration-0" : "duration-700"} ${
+                className={`absolute inset-0 flex flex-col justify-end md:justify-center transition-opacity ${reducedMotion ? "duration-0" : "duration-700"} ${
                   index === activeIndex ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
                 }`}
                 aria-hidden={index !== activeIndex}
               >
-                <span className="mb-8 mt-24 block text-xs font-bold uppercase tracking-[0.3em] text-primary">
+                <span className="mb-4 md:mb-8 mt-6 md:mt-24 block text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-primary">
                   He Said She Said Ministries
                 </span>
-                <h1 className="mb-12 text-4xl leading-[1] tracking-tight text-on-surface md:text-[6rem] font-headline">
+                <h1 className="mb-5 md:mb-12 text-[2.6rem] leading-[1.05] tracking-tight text-on-surface md:text-[6rem] font-headline">
                   {slide.title}
                   {slide.italicSubtitle ? (
                     <>
                       <br />
-                      <span className="serif ml-[-0.05em] italic text-primary">
+                      <span className="serif ml-[-0.03em] italic text-primary">
                         {slide.italicSubtitle}
                       </span>
                     </>
                   ) : null}
                 </h1>
-                <p className="mb-12 max-w-2xl text-xl leading-[1.6] text-on-surface-variant md:text-2xl font-body whitespace-pre-line">
+                <p className="mb-7 md:mb-12 max-w-2xl text-base leading-[1.65] text-on-surface-variant md:text-2xl font-body line-clamp-3 md:line-clamp-none whitespace-pre-line">
                   {slide.description}
                 </p>
-                <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-10">
+                <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-8">
                   {slide.primaryButtonText && slide.primaryButtonLink ? (
                     <SlideAction href={slide.primaryButtonLink} variant="primary">
                       {slide.primaryButtonText}
@@ -195,9 +229,10 @@ export default function HeroSlider({
             ))}
           </div>
 
+          {/* Slide indicators */}
           {slides.length > 1 ? (
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <div className="flex items-center gap-3" aria-label="Hero slide navigation">
+            <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3 md:gap-4">
+              <div className="flex items-center gap-2 md:gap-3" aria-label="Hero slide navigation">
                 {slides.map((slide, index) => (
                   <button
                     key={slide._id || `dot-${index}`}
@@ -205,36 +240,34 @@ export default function HeroSlider({
                     aria-label={`Go to slide ${index + 1}`}
                     aria-pressed={index === activeIndex}
                     onClick={() => setActiveIndex(index)}
-                    className="flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                    className="touch-press flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                   >
                     <span
-                      className={`block h-3 rounded-full transition-all duration-300 ${
+                      className={`block h-2.5 md:h-3 rounded-full transition-all duration-300 ${
                         index === activeIndex
-                          ? "w-12 bg-primary"
-                          : "w-3 bg-on-surface/25 hover:bg-on-surface/45"
+                          ? "w-8 md:w-12 bg-primary"
+                          : "w-2.5 md:w-3 bg-on-surface/25 hover:bg-on-surface/45"
                       }`}
                     />
                   </button>
                 ))}
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 md:gap-3">
                 <button
                   type="button"
                   aria-label="Previous slide"
-                  onClick={() =>
-                    setActiveIndex((current) => (current - 1 + slides.length) % slides.length)
-                  }
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-outline-variant/15 bg-surface/70 text-on-surface shadow-sm backdrop-blur-md transition-colors duration-300 hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                  onClick={goToPrev}
+                  className="touch-press flex h-11 w-11 items-center justify-center rounded-full border border-outline-variant/15 bg-surface/70 text-on-surface shadow-sm backdrop-blur-md transition-colors duration-300 hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                 >
-                  <span className="material-symbols-outlined">west</span>
+                  <span className="material-symbols-outlined text-lg md:text-base">west</span>
                 </button>
                 <button
                   type="button"
                   aria-label="Next slide"
-                  onClick={() => setActiveIndex((current) => (current + 1) % slides.length)}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-outline-variant/15 bg-surface/70 text-on-surface shadow-sm backdrop-blur-md transition-colors duration-300 hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                  onClick={goToNext}
+                  className="touch-press flex h-11 w-11 items-center justify-center rounded-full border border-outline-variant/15 bg-surface/70 text-on-surface shadow-sm backdrop-blur-md transition-colors duration-300 hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                 >
-                  <span className="material-symbols-outlined">east</span>
+                  <span className="material-symbols-outlined text-lg md:text-base">east</span>
                 </button>
               </div>
             </div>

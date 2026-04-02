@@ -10,7 +10,7 @@ export default function SiteLayout({
   return (
     <>
       <Navbar />
-      <main id="main-content" className="flex-grow pt-20 md:pt-0">
+      <main id="main-content" className="flex-grow pt-[57px] md:pt-0 has-bottom-nav md:pb-0">
         {children}
       </main>
       <ScrollToTop />
