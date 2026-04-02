@@ -39,9 +39,6 @@ export default function Navbar() {
               height={36}
               className="h-9 w-auto group-hover:scale-105 transition-transform duration-300"
             />
-            <span className="font-logo font-bold text-lg text-primary hidden lg:block tracking-tight">
-              HE SAID, She Said
-            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -101,7 +98,6 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-6 py-5 border-b border-outline-variant/10">
           <Link href="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2">
             <Image src="/hsss-logo.svg" alt="HSSS" width={28} height={28} className="h-7 w-auto" />
-            <span className="font-logo font-bold text-base text-primary tracking-tight">HSSS</span>
           </Link>
           <button
             onClick={() => setMenuOpen(false)}

@@ -13,7 +13,15 @@ export interface HeroSlide {
   title: string;
   italicSubtitle?: string;
   description: string;
-  image?: SanityImage;
+  image?: {
+    asset?: {
+      _id: string;
+      url: string;
+      metadata?: {
+        lqip: string;
+      };
+    };
+  };
   imageAlt?: string;
   staticImage?: string;
   primaryButtonText?: string;
@@ -60,10 +68,9 @@ function SlideAction({
 }
 
 function getSlideImage(slide: HeroSlide) {
-  if (slide.image) {
-    return urlFor(slide.image).width(2200).height(1600).fit("crop").url();
+  if (slide.image?.asset?.url) {
+    return slide.image.asset.url;
   }
-
   return slide.staticImage || "/about_hsss.png";
 }
 
@@ -110,25 +117,31 @@ export default function HeroSlider({
   return (
     <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-surface pb-32 pt-40">
       <div className="absolute inset-0 z-0">
-        {slides.map((slide, index) => (
-          <div
-            key={slide._id || `${slide.title}-${index}`}
-            className={`absolute inset-0 transition-opacity ${reducedMotion ? "duration-0" : "duration-1000"} ${
-              index === activeIndex ? "opacity-100" : "opacity-0"
-            }`}
-            aria-hidden={index !== activeIndex}
-          >
-            <Image
-              src={getSlideImage(slide)}
-              alt={slide.imageAlt || slide.title}
-              fill
-              priority={index === 0}
-              className="object-cover"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-surface/20" />
-          </div>
-        ))}
+        {slides.map((slide, index) => {
+          const lqip = slide.image?.asset?.metadata?.lqip;
+          return (
+            <div
+              key={slide._id || `${slide.title}-${index}`}
+              className={`absolute inset-0 transition-opacity ${reducedMotion ? "duration-0" : "duration-1000"} ${
+                index === activeIndex ? "opacity-100" : "opacity-0"
+              }`}
+              aria-hidden={index !== activeIndex}
+            >
+              <Image
+                src={getSlideImage(slide)}
+                alt={slide.imageAlt || slide.title}
+                fill
+                priority={index === 0}
+                {...(index === 0 ? { fetchPriority: "high" } : { fetchPriority: "low" })}
+                placeholder={lqip ? "blur" : "empty"}
+                blurDataURL={lqip}
+                className="object-cover"
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-surface/20" />
+            </div>
+          );
+        })}
       </div>
 
       <div className="absolute -left-24 -top-24 z-0 h-96 w-96 animate-pulse rounded-full bg-primary-fixed opacity-20 blur-3xl" />

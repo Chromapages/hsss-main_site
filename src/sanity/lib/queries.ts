@@ -5,7 +5,15 @@ export const heroSlidesQuery = groq`*[_type == "heroSlide"] | order(order asc, _
   title,
   italicSubtitle,
   description,
-  image,
+  image {
+    asset-> {
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    }
+  },
   staticImage,
   imageAlt,
   primaryButtonText,
@@ -36,7 +44,15 @@ export const eventsQuery = groq`*[_type == "event"] | order(date asc) {
   date,
   location,
   description,
-  image,
+  image {
+    asset-> {
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    }
+  },
   isFeaturedTheme,
   subtitle,
   italicTitle,
@@ -53,7 +69,15 @@ export const testimonialsQuery = groq`*[_type == "testimonial"] {
   author,
   quote,
   role,
-  image,
+  image {
+    asset-> {
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    }
+  },
   color
 }`
 
@@ -62,7 +86,15 @@ export const aboutSectionQuery = groq`*[_type == "aboutSection"][0] {
   title,
   italicTitle,
   content,
-  image,
+  image {
+    asset-> {
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    }
+  },
   stats
 }`
 
@@ -73,7 +105,15 @@ export const homeSettingsQuery = groq`*[_type == "homeSettings"][0] {
     quote,
     highlight,
     source,
-    backgroundImage
+    backgroundImage {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      }
+    }
   },
   testimonialsSection,
   eventsSection
@@ -85,16 +125,30 @@ export const aboutSettingsQuery = groq`*[_type == "aboutSettings"][0] {
     title,
     italicTitle,
     description,
-    image
+    image {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      }
+    }
   },
   founderSection {
     badge,
     title,
     italicTitle,
     description,
-    image,
-    ctaLabel,
-    ctaLink
+    image {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      }
+    }
   },
   pillarsSection {
     title,
@@ -121,7 +175,15 @@ export const videosQuery = groq`*[_type == "video"] | order(date desc) {
   "slug": slug.current,
   date,
   category,
-  thumbnail,
+  thumbnail {
+    asset-> {
+      _id,
+      url,
+      metadata {
+        lqip
+      }
+    }
+  },
   videoUrl,
   embedCode,
   type
@@ -134,9 +196,15 @@ export const coachingSettingsQuery = groq`*[_type == "coachingSettings"][0] {
     title,
     italicTitle,
     description,
-    image,
-    testimonialQuote,
-    testimonialAuthor
+    image {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      }
+    }
   },
   services[] {
     number,
@@ -150,12 +218,15 @@ export const coachingSettingsQuery = groq`*[_type == "coachingSettings"][0] {
     ctaLink
   },
   bannerSection {
-    image,
-    title,
-    italicTitle,
-    description,
-    ctaText,
-    ctaLink
+    image {
+      asset-> {
+        _id,
+        url,
+        metadata {
+          lqip
+        }
+      }
+    }
   }
 }`
 

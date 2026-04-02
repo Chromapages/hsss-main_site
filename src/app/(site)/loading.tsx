@@ -1,9 +1,11 @@
+import { HeroSkeleton, SanctuaryPathSkeleton } from "@/components/skeletons/SectionSkeletons";
+
 export default function Loading() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-surface">
-      <div className="flex flex-col items-center gap-6">
-        <div className="w-16 h-16 rounded-full border-4 border-primary-fixed border-t-primary animate-spin" />
-        <p className="text-on-surface-variant font-label text-sm uppercase tracking-widest font-bold">Loading…</p>
+    <div className="flex flex-col min-h-screen bg-surface pt-24 space-y-32">
+      <HeroSkeleton />
+      <div className="container mx-auto px-12 max-w-[1600px] mb-32">
+        <SanctuaryPathSkeleton />
       </div>
     </div>
   );

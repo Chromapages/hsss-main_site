@@ -1,14 +1,8 @@
 "use client";
 
 import React from "react";
-
-interface Testimonial {
-  _id?: string;
-  quote: string;
-  author: string;
-  role: string;
-  color: "primary" | "secondary" | "tertiary";
-}
+import Image from "next/image";
+import type { Testimonial } from "@/lib/constants";
 
 interface MarqueeProps {
   testimonials: Testimonial[];
@@ -40,15 +34,32 @@ function TestimonialCard({ testimonial: t }: { testimonial: Testimonial }) {
     tertiary: "text-tertiary",
   };
 
+  const lqip = t.image?.asset?.metadata?.lqip;
+
   return (
-    <div className="w-80 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm group hover:shadow-md transition-shadow duration-300">
-      <span
-        className={`material-symbols-outlined ${colorMap[t.color]} text-4xl opacity-40`}
-        style={{ fontVariationSettings: "'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48" }}
-      >
-        format_quote
-      </span>
-      <p className="font-body text-on-surface-variant leading-relaxed text-sm flex-grow">
+    <div className="w-96 shrink-0 bg-surface-container-lowest rounded-[2rem] p-10 flex flex-col gap-6 shadow-sm group hover:shadow-md transition-shadow duration-300">
+      <div className="flex items-start justify-between">
+        <span
+          className={`material-symbols-outlined ${colorMap[t.color]} text-4xl opacity-40`}
+          style={{ fontVariationSettings: "'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 48" }}
+        >
+          format_quote
+        </span>
+        {t.image?.asset?.url && (
+          <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-surface-container-low shadow-sm">
+            <Image
+              src={t.image.asset.url}
+              alt={t.author}
+              fill
+              sizes="56px"
+              placeholder={lqip ? "blur" : "empty"}
+              blurDataURL={lqip}
+              className="object-cover"
+            />
+          </div>
+        )}
+      </div>
+      <p className="font-body text-on-surface-variant leading-relaxed text-base flex-grow">
         {t.quote}
       </p>
       <div>
