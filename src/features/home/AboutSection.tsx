@@ -19,6 +19,7 @@ export default async function AboutSection() {
               <Image
                 src={aboutData?.image?.asset?.url ? aboutData.image.asset.url : "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=1600&auto=format&fit=crop"} 
                 alt={aboutData?.title || "Sacred Study"}
+                fill
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
                 placeholder={lqip ? "blur" : "empty"}
