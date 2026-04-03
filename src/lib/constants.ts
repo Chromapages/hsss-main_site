@@ -1,5 +1,36 @@
-import type { HeroSlide } from "@/components/HeroSlider";
-import { SanityImageSource } from "@sanity/asset-utils";
+export type SanityImageAssetMetadata = {
+  lqip?: string;
+  dimensions?: {
+    width: number;
+    height: number;
+    aspectRatio: number;
+  };
+};
+
+export type SanityImageAsset = {
+  _id: string;
+  url: string;
+  metadata?: SanityImageAssetMetadata;
+};
+
+export type SanityImageField = {
+  asset?: SanityImageAsset;
+};
+
+export type HeroSlide = {
+  _id?: string;
+  title: string;
+  italicSubtitle?: string;
+  description: string;
+  image?: SanityImageField;
+  imageAlt?: string;
+  staticImage?: string;
+  primaryButtonText?: string;
+  primaryButtonLink?: string;
+  secondaryButtonText?: string;
+  secondaryButtonLink?: string;
+  order?: number;
+};
 
 export type Testimonial = {
   _id?: string;
@@ -7,15 +38,7 @@ export type Testimonial = {
   role: string;
   quote: string;
   color: "primary" | "secondary" | "tertiary";
-  image?: {
-    asset?: {
-      _id: string;
-      url: string;
-      metadata?: {
-        lqip: string;
-      };
-    };
-  };
+  image?: SanityImageField;
 };
 
 export type EventItem = {
@@ -25,7 +48,7 @@ export type EventItem = {
   date: string;
   location?: string;
   description: string;
-  image?: any;
+  image?: SanityImageField;
   staticImage?: string;
   category?: string;
   icon?: string;
@@ -57,7 +80,7 @@ export type HomeAboutData = {
   title: string;
   italicTitle?: string;
   content: string;
-  image: any;
+  image?: SanityImageField;
   stats?: Array<{ value: string; label: string }>;
 };
 

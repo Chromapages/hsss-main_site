@@ -22,14 +22,40 @@ type AboutSettings = {
     title?: string;
     italicTitle?: string;
     description?: string;
-    image?: SanityImage;
+    image?: {
+      asset?: {
+        _id: string;
+        url: string;
+        metadata?: {
+          lqip?: string;
+          dimensions?: {
+            width: number;
+            height: number;
+            aspectRatio: number;
+          };
+        };
+      };
+    };
   };
   founderSection?: {
     badge?: string;
     title?: string;
     italicTitle?: string;
     description?: string;
-    image?: SanityImage;
+    image?: {
+      asset?: {
+        _id: string;
+        url: string;
+        metadata?: {
+          lqip?: string;
+          dimensions?: {
+            width: number;
+            height: number;
+            aspectRatio: number;
+          };
+        };
+      };
+    };
     ctaLabel?: string;
     ctaLink?: string;
   };
@@ -102,11 +128,14 @@ export default async function About() {
             <div className="relative">
               <div className="aspect-[4/3] md:aspect-square rounded-[1.75rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative z-10">
                 <Image
-                  src={origin?.image ? urlFor(origin.image).url() : "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000&auto=format&fit=crop"}
+                  src={origin?.image?.asset?.url ? origin.image.asset.url : "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000&auto=format&fit=crop"}
                   alt="Gathering"
-                  fill
+                  width={origin?.image?.asset?.metadata?.dimensions?.width || 1000}
+                  height={origin?.image?.asset?.metadata?.dimensions?.height || 1000}
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
+                  placeholder={origin?.image?.asset?.metadata?.lqip ? "blur" : "empty"}
+                  blurDataURL={origin?.image?.asset?.metadata?.lqip}
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 w-36 h-36 md:w-48 md:h-48 bg-primary opacity-20 rounded-full blur-3xl -z-10"></div>
@@ -174,11 +203,14 @@ export default async function About() {
             <div className="relative order-1 lg:order-1">
               <div className="aspect-[4/3] md:aspect-[4/5] rounded-[1.75rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative z-10 border-4 border-white/50 group">
                 <Image
-                  src={founder?.image ? urlFor(founder.image).url() : "/profile_image.png"}
+                  src={founder?.image?.asset?.url ? founder.image.asset.url : "/profile_image.png"}
                   alt="Andrea - HSSS Founder"
-                  fill
+                  width={founder?.image?.asset?.metadata?.dimensions?.width || 800}
+                  height={founder?.image?.asset?.metadata?.dimensions?.height || 1000}
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                  placeholder={founder?.image?.asset?.metadata?.lqip ? "blur" : "empty"}
+                  blurDataURL={founder?.image?.asset?.metadata?.lqip}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                 />
               </div>
               <div className="absolute -top-8 -left-8 md:-top-12 md:-left-12 w-40 h-40 md:w-64 md:h-64 bg-primary opacity-10 blur-3xl -z-10 animate-pulse"></div>

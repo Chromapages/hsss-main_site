@@ -10,7 +10,8 @@ export const heroSlidesQuery = groq`*[_type == "heroSlide"] | order(order asc, _
       _id,
       url,
       metadata {
-        lqip
+        lqip,
+        dimensions
       }
     }
   },
@@ -49,7 +50,8 @@ export const eventsQuery = groq`*[_type == "event"] | order(date asc) {
       _id,
       url,
       metadata {
-        lqip
+        lqip,
+        dimensions
       }
     }
   },
@@ -74,7 +76,8 @@ export const testimonialsQuery = groq`*[_type == "testimonial"] {
       _id,
       url,
       metadata {
-        lqip
+        lqip,
+        dimensions
       }
     }
   },
@@ -91,7 +94,8 @@ export const aboutSectionQuery = groq`*[_type == "aboutSection"][0] {
       _id,
       url,
       metadata {
-        lqip
+        lqip,
+        dimensions
       }
     }
   },
@@ -110,7 +114,8 @@ export const homeSettingsQuery = groq`*[_type == "homeSettings"][0] {
         _id,
         url,
         metadata {
-          lqip
+          lqip,
+          dimensions
         }
       }
     }
@@ -130,7 +135,8 @@ export const aboutSettingsQuery = groq`*[_type == "aboutSettings"][0] {
         _id,
         url,
         metadata {
-          lqip
+          lqip,
+          dimensions
         }
       }
     }
@@ -145,7 +151,8 @@ export const aboutSettingsQuery = groq`*[_type == "aboutSettings"][0] {
         _id,
         url,
         metadata {
-          lqip
+          lqip,
+          dimensions
         }
       }
     }
@@ -180,7 +187,8 @@ export const videosQuery = groq`*[_type == "video"] | order(date desc) {
       _id,
       url,
       metadata {
-        lqip
+        lqip,
+        dimensions
       }
     }
   },
@@ -201,7 +209,8 @@ export const coachingSettingsQuery = groq`*[_type == "coachingSettings"][0] {
         _id,
         url,
         metadata {
-          lqip
+          lqip,
+          dimensions
         }
       }
     }
@@ -223,7 +232,8 @@ export const coachingSettingsQuery = groq`*[_type == "coachingSettings"][0] {
         _id,
         url,
         metadata {
-          lqip
+          lqip,
+          dimensions
         }
       }
     }

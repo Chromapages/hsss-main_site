@@ -1,7 +1,7 @@
-import HeroSlider, { type HeroSlide } from "@/components/HeroSlider";
+import HeroSlider from "@/components/HeroSlider";
 import { client } from "@/sanity/lib/client";
 import { heroSlidesQuery } from "@/sanity/lib/queries";
-import { FALLBACK_HERO_SLIDES } from "@/lib/constants";
+import { FALLBACK_HERO_SLIDES, type HeroSlide } from "@/lib/constants";
 
 export default async function HeroSection() {
   const heroSlides = await client.fetch<HeroSlide[]>(heroSlidesQuery);

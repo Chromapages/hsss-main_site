@@ -19,12 +19,13 @@ export default async function AboutSection() {
               <Image
                 src={aboutData?.image?.asset?.url ? aboutData.image.asset.url : "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=1600&auto=format&fit=crop"} 
                 alt={aboutData?.title || "Sacred Study"}
-                fill
+                width={aboutData?.image?.asset?.metadata?.dimensions?.width || 1200}
+                height={aboutData?.image?.asset?.metadata?.dimensions?.height || 1500}
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
                 placeholder={lqip ? "blur" : "empty"}
                 blurDataURL={lqip}
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="w-full h-auto transition-transform duration-1000 group-hover:scale-105"
               />
             </div>
             <div className="absolute -top-8 -right-8 md:-top-12 md:-right-12 w-40 h-40 md:w-64 md:h-64 bg-secondary-fixed opacity-30 blur-3xl -z-10 animate-pulse"></div>

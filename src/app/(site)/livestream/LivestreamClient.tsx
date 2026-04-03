@@ -2,15 +2,14 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { urlFor } from "@/sanity/lib/image";
-import type { Image as SanityImage } from "sanity";
+import type { SanityImageField } from "@/lib/constants";
 
 export type Video = {
   _id: string;
   title: string;
   date: string;
   category: string;
-  thumbnail: SanityImage;
+  thumbnail: SanityImageField;
   videoUrl?: string;
   embedCode?: string;
   type: string;
@@ -205,11 +204,14 @@ function VideoCard({ session, onClick }: { session: Video; onClick: () => void }
     <div className="group cursor-pointer" onClick={onClick}>
       <div className="relative aspect-video rounded-[2rem] overflow-hidden mb-6 shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2">
         <Image 
-          src={(session.thumbnail?.asset?._ref && session.thumbnail.asset._ref !== 'dummy') ? urlFor(session.thumbnail).url() : "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000&auto=format&fit=crop"} 
+          src={session.thumbnail?.asset?.url || "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000&auto=format&fit=crop"} 
           alt={session.title}
-          fill
+          width={session.thumbnail?.asset?.metadata?.dimensions?.width || 800}
+          height={session.thumbnail?.asset?.metadata?.dimensions?.height || 450}
+          placeholder={session.thumbnail?.asset?.metadata?.lqip ? "blur" : "empty"}
+          blurDataURL={session.thumbnail?.asset?.metadata?.lqip}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

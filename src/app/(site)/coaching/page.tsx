@@ -34,13 +34,39 @@ type CoachingSettings = {
     title?: string;
     italicTitle?: string;
     description?: string;
-    image?: SanityImage;
+    image?: {
+      asset?: {
+        _id: string;
+        url: string;
+        metadata?: {
+          lqip?: string;
+          dimensions?: {
+            width: number;
+            height: number;
+            aspectRatio: number;
+          };
+        };
+      };
+    };
     testimonialQuote?: string;
     testimonialAuthor?: string;
   };
   services?: CoachingService[];
   bannerSection?: {
-    image?: SanityImage;
+    image?: {
+      asset?: {
+        _id: string;
+        url: string;
+        metadata?: {
+          lqip?: string;
+          dimensions?: {
+            width: number;
+            height: number;
+            aspectRatio: number;
+          };
+        };
+      };
+    };
     title?: string;
     italicTitle?: string;
     description?: string;
@@ -105,8 +131,10 @@ export default async function Coaching() {
   const services = settings?.services?.length ? settings.services : defaultServices;
   const banner = settings?.bannerSection;
 
-  const heroImageSrc = hero?.image ? urlFor(hero.image).url() : "/about_hsss.png";
-  const bannerImageSrc = banner?.image ? urlFor(banner.image).url() : "/coaching-banner.png";
+  const heroImageSrc = hero?.image?.asset?.url || "/about_hsss.png";
+  const bannerImageSrc = banner?.image?.asset?.url || "/coaching-banner.png";
+  const heroLqip = hero?.image?.asset?.metadata?.lqip;
+  const bannerLqip = banner?.image?.asset?.metadata?.lqip;
 
   return (
     <div className="flex flex-col min-h-screen pt-4 md:pt-24">
@@ -160,9 +188,12 @@ export default async function Coaching() {
                 <Image
                   src={heroImageSrc}
                   alt="Coaching Session"
-                  fill
+                  width={hero?.image?.asset?.metadata?.dimensions?.width || 1200}
+                  height={hero?.image?.asset?.metadata?.dimensions?.height || 1500}
                   sizes="50vw"
-                  className="object-cover"
+                  placeholder={heroLqip ? "blur" : "empty"}
+                  blurDataURL={heroLqip}
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -top-12 -right-12 w-64 h-64 bg-secondary-fixed opacity-20 blur-3xl -z-10 animate-pulse" />
@@ -252,9 +283,12 @@ export default async function Coaching() {
         <Image
           src={bannerImageSrc}
           alt={banner?.title || "Inspiration Banner"}
-          fill
+          width={banner?.image?.asset?.metadata?.dimensions?.width || 1920}
+          height={banner?.image?.asset?.metadata?.dimensions?.height || 1080}
           sizes="100vw"
-          className="object-cover"
+          placeholder={bannerLqip ? "blur" : "empty"}
+          blurDataURL={bannerLqip}
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px]" />
         <div className="container mx-auto px-5 md:px-12 max-w-[1600px] relative z-10 text-center">

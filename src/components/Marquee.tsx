@@ -50,11 +50,11 @@ function TestimonialCard({ testimonial: t }: { testimonial: Testimonial }) {
             <Image
               src={t.image.asset.url}
               alt={t.author}
-              fill
-              sizes="56px"
+              width={56}
+              height={56}
               placeholder={lqip ? "blur" : "empty"}
               blurDataURL={lqip}
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
         )}

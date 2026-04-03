@@ -5,30 +5,8 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
+import type { HeroSlide } from "@/lib/constants";
 import { urlFor } from "@/sanity/lib/image";
-
-export interface HeroSlide {
-  _id?: string;
-  title: string;
-  italicSubtitle?: string;
-  description: string;
-  image?: {
-    asset?: {
-      _id: string;
-      url: string;
-      metadata?: {
-        lqip: string;
-      };
-    };
-  };
-  imageAlt?: string;
-  staticImage?: string;
-  primaryButtonText?: string;
-  primaryButtonLink?: string;
-  secondaryButtonText?: string;
-  secondaryButtonLink?: string;
-  order?: number;
-}
 
 interface HeroSliderProps {
   slides: HeroSlide[];
@@ -160,12 +138,13 @@ export default function HeroSlider({
               <Image
                 src={getSlideImage(slide)}
                 alt={slide.imageAlt || slide.title}
-                fill
+                width={slide.image?.asset?.metadata?.dimensions?.width || 1920}
+                height={slide.image?.asset?.metadata?.dimensions?.height || 1080}
                 priority={index === 0}
                 {...(index === 0 ? { fetchPriority: "high" } : { fetchPriority: "low" })}
                 placeholder={lqip ? "blur" : "empty"}
                 blurDataURL={lqip}
-                className="object-cover object-center md:object-center"
+                className="w-full h-full object-cover object-center"
                 sizes="100vw"
               />
               {/* Mobile: stronger bottom gradient for readability */}

@@ -59,11 +59,12 @@ export default async function EventsSection() {
                   <Image
                     src={getEventImageSrc(event)}
                     alt={event.title}
-                    fill
+                    width={event.image?.asset?.metadata?.dimensions?.width || 800}
+                    height={event.image?.asset?.metadata?.dimensions?.height || 600}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     placeholder={lqip ? "blur" : "empty"}
                     blurDataURL={lqip}
-                    className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent"></div>
                   <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-8">
@@ -100,39 +101,45 @@ export default async function EventsSection() {
             );
           })}
 
-          {/* Featured Theme — full width */}
-          <div className="md:col-span-2 relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden card-interactive min-h-[320px] md:min-h-[420px] flex items-end">
+          <div className="md:col-span-2 relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden card-interactive min-h-[400px] md:min-h-[500px] flex items-end group shadow-2xl shadow-black/20">
             {(featuredTheme as any).image?.asset?.url ? (
               <>
                 <Image
                   src={(featuredTheme as any).image.asset.url}
-                  alt={featuredTheme.title}
-                  fill
+                  alt=""
+                  width={(featuredTheme as any).image?.asset?.metadata?.dimensions?.width || 1920}
+                  height={(featuredTheme as any).image?.asset?.metadata?.dimensions?.height || 1080}
                   sizes="100vw"
                   placeholder={(featuredTheme as any).image?.asset?.metadata?.lqip ? "blur" : "empty"}
                   blurDataURL={(featuredTheme as any).image?.asset?.metadata?.lqip}
-                  className="object-cover transition-transform duration-[2000ms] group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(10,31,15,0.92),rgba(20,54,25,0.8)_45%,rgba(34,139,34,0.65)_100%)]"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(10,25,12,0.95),rgba(20,54,25,0.7)_50%,rgba(34,139,34,0.6)_100%)]"></div>
               </>
             ) : (
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(10,31,15,0.94),rgba(20,54,25,0.85)_45%,rgba(34,139,34,0.82)_100%)]"></div>
+              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(10,25,12,0.98),rgba(20,54,25,0.85)_45%,rgba(34,139,34,0.8)_100%)]"></div>
             )}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_28%),radial-gradient(circle_at_15%_20%,rgba(255,217,227,0.18),transparent_22%)]"></div>
-            <div className="absolute right-6 top-6 hidden md:flex h-32 md:h-40 w-32 md:w-40 items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-sm">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(236,210,139,0.15),transparent_40%),radial-gradient(circle_at_15%_20%,rgba(255,217,227,0.1),transparent_25%)]"></div>
+            
+            {/* Theme Badge — Top Right */}
+            <div className="absolute right-5 top-5 md:right-10 md:top-10 flex h-24 w-24 md:h-32 md:w-32 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md z-20">
               <div className="text-center">
-                <div className="text-[11px] font-label uppercase tracking-[0.28em] text-[#ecd28b]">Theme</div>
-                <div className="mt-2 md:mt-3 text-2xl md:text-3xl font-headline tracking-tight text-white">{featuredTheme.themeYear || "2026"}</div>
+                <div className="text-[10px] font-label uppercase tracking-[0.25em] text-[#ecd28b]/80">Theme</div>
+                <div className="mt-1 text-xl md:text-2xl font-headline tracking-tighter text-white">{featuredTheme.themeYear || "2026"}</div>
               </div>
             </div>
-            <div className="relative z-10 p-7 md:p-12 lg:p-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8 w-full text-white">
-              <div>
-                <div className="flex items-center gap-2 md:gap-3 text-[#ecd28b] font-bold mb-4 md:mb-6">
-                  <span className="material-symbols-outlined text-lg md:text-xl">near_me</span>
-                  <span className="text-[10px] md:text-xs font-label uppercase tracking-[0.25em]">{featuredTheme.subtitle || "Organization Theme"}</span>
-                  <span className="ml-1 px-2 py-0.5 rounded-full bg-[#ecd28b] text-black text-[9px] md:text-[10px] font-label font-bold uppercase tracking-widest">Featured</span>
+
+            <div className="relative z-10 p-6 md:p-12 lg:p-16 w-full text-white">
+              <div className="max-w-4xl">
+                <div className="flex flex-wrap items-center gap-2 mb-4 md:mb-8">
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-[#ecd28b]">
+                    <span className="material-symbols-outlined text-sm md:text-base">near_me</span>
+                    <span className="text-[9px] md:text-[10px] font-label uppercase tracking-[0.22em] font-bold">{featuredTheme.subtitle || "Organization Theme"}</span>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-[#ecd28b] text-black text-[9px] md:text-[10px] font-label font-bold uppercase tracking-widest shadow-lg">Featured</span>
                 </div>
-                <h3 className="text-3xl md:text-5xl lg:text-7xl mb-3 md:mb-5 leading-[0.95] tracking-tighter font-headline">
+                
+                <h3 className="text-3xl md:text-5xl lg:text-7xl mb-4 md:mb-8 leading-[0.95] tracking-tighter font-headline font-bold">
                   {featuredTheme.italicTitle ? (
                     <>
                       {featuredTheme.title.replace(featuredTheme.italicTitle, '')}
@@ -142,15 +149,24 @@ export default async function EventsSection() {
                     featuredTheme.title
                   )}
                 </h3>
-                <p className="text-sm md:text-lg text-white/80 max-w-2xl leading-relaxed font-body line-clamp-3 md:line-clamp-none whitespace-pre-line">
-                  {featuredTheme.description}
-                </p>
-                <p className="mt-3 md:mt-5 text-[10px] md:text-xs font-label uppercase tracking-[0.28em] text-white/65">{featuredTheme.scripture}</p>
-              </div>
-              <div className="shrink-0">
-                <button className="touch-press bg-[#ecd28b] text-black px-8 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl font-bold text-base md:text-lg active:scale-[0.97] transition-all duration-300 shadow-2xl shadow-yellow-900/20 whitespace-nowrap">
-                  {featuredTheme.buttonText || "Embrace The Theme"}
-                </button>
+                
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-12">
+                  <div className="max-w-2xl">
+                    <p className="text-sm md:text-lg text-white/90 leading-relaxed font-body whitespace-pre-line mb-4 md:mb-6">
+                      {featuredTheme.description}
+                    </p>
+                    <p className="text-[10px] md:text-xs font-label uppercase tracking-[0.3em] text-[#ecd28b]/80">{featuredTheme.scripture}</p>
+                  </div>
+                  
+                  <div className="shrink-0">
+                    <button className="group/btn relative touch-press bg-[#ecd28b] text-black px-8 py-4 md:px-10 md:py-5 rounded-xl md:rounded-2xl font-bold text-sm md:text-lg active:scale-[0.97] transition-all duration-300 shadow-2xl hover:-translate-y-1 overflow-hidden">
+                      <span className="relative z-10 flex items-center gap-2">
+                        {featuredTheme.buttonText || "Embrace The Theme"}
+                        <span className="material-symbols-outlined text-xl group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
