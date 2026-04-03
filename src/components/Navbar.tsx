@@ -69,6 +69,7 @@ export default function Navbar() {
                     ? "text-primary border-primary"
                     : "text-on-surface/70 border-transparent hover:border-primary/20"
                 }`}
+                aria-current={pathname === link.href ? "page" : undefined}
               >
                 {link.name}
               </Link>

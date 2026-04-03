@@ -17,9 +17,9 @@ export default async function AboutSection() {
           <div className="md:col-span-6 relative">
             <div className="aspect-[4/3] md:aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl relative z-10 group">
               <Image
-                src={aboutData?.image?.asset?.url ? aboutData.image.asset.url : "https://lh3.googleusercontent.com/aida-public/AB6AXuAs0ig0bDF0pIEaZwEb5-S1VaQvqIOjQgr3o4GIrHHMOZffcrUFUbWEsvz_9tPS0pgNfDQxu8SoYa1y5A7cnjOnOv3wtNL_IZNXFrE18nuhqPLRaGdnhWh3bHSqUyBkw_AXYdqjyBF1LUbC_x7GPRnwnq3iJMH2nQawkGnWaYiBGE28XD4YlluduCvG1FKNqdzKsbKrrnJI5UJiu_McpDzo65lebrBwP5y0uz2fTTjuAEdm81WcGdABWILo0yZ1HDMFjTBoeR5Y8g"}
+                src={aboutData?.image?.asset?.url ? aboutData.image.asset.url : "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=1600&auto=format&fit=crop"} 
                 alt={aboutData?.title || "Sacred Study"}
-                fill
+                priority
                 sizes="(max-width: 768px) 100vw, 50vw"
                 placeholder={lqip ? "blur" : "empty"}
                 blurDataURL={lqip}
@@ -66,7 +66,7 @@ export default async function AboutSection() {
                   <>
                     <div className="group">
                       <div className="text-3xl md:text-5xl font-headline text-primary mb-1 md:mb-2 transition-transform duration-300 group-hover:translate-y-[-4px]">500+</div>
-                      <div className="text-[10px] md:text-xs font-label uppercase tracking-[0.2em] text-outline font-bold">Soul Journers</div>
+                      <div className="text-[10px] md:text-xs font-label uppercase tracking-[0.2em] text-outline font-bold">Sojourners</div>
                     </div>
                     <div className="group">
                       <div className="text-3xl md:text-5xl font-headline text-primary mb-1 md:mb-2 transition-transform duration-300 group-hover:translate-y-[-4px]">Daily</div>

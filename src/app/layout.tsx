@@ -113,7 +113,11 @@ export default function RootLayout({
               },
               email: "hsssat@outlook.com",
               telephone: "+1-855-474-3724",
-              sameAs: [],
+              sameAs: [
+                "https://www.facebook.com/hsssministries",
+                "https://www.instagram.com/hsssministries",
+                "https://www.youtube.com/@hsssministries"
+              ],
             }),
           }}
         />

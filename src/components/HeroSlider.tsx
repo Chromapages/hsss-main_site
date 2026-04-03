@@ -237,7 +237,7 @@ export default function HeroSlider({
                   <button
                     key={slide._id || `dot-${index}`}
                     type="button"
-                    aria-label={`Go to slide ${index + 1}`}
+                    aria-label={`Go to slide ${index + 1}: ${slide.title || 'Featured Slide'}`}
                     aria-pressed={index === activeIndex}
                     onClick={() => setActiveIndex(index)}
                     className="touch-press flex h-11 w-11 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
