@@ -60,7 +60,7 @@ export default function Navbar() {
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
+            {navLinks.filter(link => link.name !== "Contact").map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
@@ -74,6 +74,11 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+            <Link href="/contact">
+              <button className="signature-gradient text-on-primary px-7 py-3 rounded-full font-label font-bold tracking-tight hover:scale-95 duration-300 transition-all shadow-lg shadow-primary/20 touch-press no-select">
+                Contact
+              </button>
+            </Link>
           </div>
 
           {/* Mobile: hamburger hidden — using bottom nav instead */}
