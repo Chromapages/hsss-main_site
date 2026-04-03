@@ -157,8 +157,8 @@ export default function Footer() {
             "For you have not passed this way before." — Joshua 3:4
           </div>
           <div className="hover:text-primary transition-colors">
-            <a href="https://servestrategy.com" className="underline underline-offset-4">
-              Design by ServeStrategy.com
+            <a href="https://chromapages.com" className="underline underline-offset-4">
+              Design by Chromapages.com
             </a>
           </div>
         </div>
